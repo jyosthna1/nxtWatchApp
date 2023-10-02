@@ -7,12 +7,26 @@ import {
   Label,
   Input,
   LoginPage,
+  LabelShowPassword,
+  PasswordContainer,
+  InputCheckbox,
 } from './styledComponents'
 import ThemeContext from '../../context/ThemeContext'
 
 class LoginDetails extends Component {
+  state = {userName: '', password: '', showPassword: false}
+
+  onChangeUserName = event => {
+    this.setState({userName: event.target.value})
+  }
+
+  onChangePassword = event => {
+    this.setState({password: event.target.value})
+  }
+
   render() {
     const {lightTheme} = this.props
+    const {userName, password} = this.state
 
     return (
       <LoginPage>
@@ -24,8 +38,30 @@ class LoginDetails extends Component {
             />
             <UserNameContainer>
               <Label htmlFor="userName">USERNAME</Label>
-              <Input type="text" id="userName" placeholder="Username" />
+              <Input
+                type="text"
+                id="userName"
+                placeholder="Username"
+                value={userName}
+                onChange={this.onChangeUserName}
+              />
             </UserNameContainer>
+            <UserNameContainer>
+              <Label htmlFor="password">PASSWORD</Label>
+              <Input
+                type="password"
+                id="userName"
+                placeholder="password"
+                value={password}
+                onChange={this.onChangePassword}
+              />
+            </UserNameContainer>
+            <PasswordContainer>
+              <InputCheckbox type="checkbox" id="showPassword" />
+              <LabelShowPassword htmlFor="showPassword">
+                Show Password
+              </LabelShowPassword>
+            </PasswordContainer>
           </LoginContainer>
         ) : (
           <LoginContainerDark>

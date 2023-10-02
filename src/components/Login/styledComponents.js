@@ -39,6 +39,7 @@ export const Input = styled.input`
   width: 250px;
   padding: 6px 10px 6px 10px;
   outline: none;
+  margin-bottom: 10px;
 `
 export const Label = styled.label`
   font-family: 'Roboto';
@@ -46,4 +47,20 @@ export const Label = styled.label`
   color: #94a3b8;
   font-weight: bold;
   padding-bottom: 10px;
+`
+export const LabelShowPassword = styled.label`
+  font-family: 'Roboto';
+  font-size: 13px;
+  color: #181818;
+  font-weight: bold;
+  padding-bottom: 10px;
+`
+export const PasswordContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+`
+export const InputCheckbox = styled.input`
+  outline: none;
 `
