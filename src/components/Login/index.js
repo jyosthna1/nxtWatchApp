@@ -4,12 +4,17 @@ import {
   Image,
   LoginContainerDark,
   UserNameContainer,
-  Label,
-  Input,
+  LabelLight,
   LoginPage,
   LabelShowPassword,
   PasswordContainer,
   InputCheckbox,
+  ButtonLogin,
+  LoginPageDark,
+  LabelDark,
+  InputLight,
+  InputDark,
+  LabelShowPasswordDark,
 } from './styledComponents'
 import ThemeContext from '../../context/ThemeContext'
 
@@ -24,54 +29,108 @@ class LoginDetails extends Component {
     this.setState({password: event.target.value})
   }
 
+  onClickChangeStatus = () => {
+    this.setState(prevState => ({showPassword: !prevState.showPassword}))
+  }
+
   render() {
     const {lightTheme} = this.props
-    const {userName, password} = this.state
+    const {userName, password, showPassword} = this.state
 
     return (
-      <LoginPage>
+      <>
         {lightTheme ? (
-          <LoginContainer>
-            <Image
-              src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
-              alt="website logo"
-            />
-            <UserNameContainer>
-              <Label htmlFor="userName">USERNAME</Label>
-              <Input
-                type="text"
-                id="userName"
-                placeholder="Username"
-                value={userName}
-                onChange={this.onChangeUserName}
+          <LoginPage>
+            <LoginContainer>
+              <Image
+                src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
+                alt="website logo"
               />
-            </UserNameContainer>
-            <UserNameContainer>
-              <Label htmlFor="password">PASSWORD</Label>
-              <Input
-                type="password"
-                id="userName"
-                placeholder="password"
-                value={password}
-                onChange={this.onChangePassword}
-              />
-            </UserNameContainer>
-            <PasswordContainer>
-              <InputCheckbox type="checkbox" id="showPassword" />
-              <LabelShowPassword htmlFor="showPassword">
-                Show Password
-              </LabelShowPassword>
-            </PasswordContainer>
-          </LoginContainer>
+              <UserNameContainer>
+                <LabelLight htmlFor="userName">USERNAME</LabelLight>
+                <InputLight
+                  type="text"
+                  id="userName"
+                  placeholder="Username"
+                  value={userName}
+                  onChange={this.onChangeUserName}
+                />
+              </UserNameContainer>
+              <UserNameContainer>
+                <LabelLight htmlFor="password">PASSWORD</LabelLight>
+                {showPassword ? (
+                  <InputLight
+                    type="text"
+                    id="userName"
+                    placeholder="password"
+                    value={password}
+                    onChange={this.onChangePassword}
+                  />
+                ) : (
+                  <InputLight
+                    type="password"
+                    id="userName"
+                    placeholder="password"
+                    value={password}
+                    onChange={this.onChangePassword}
+                  />
+                )}
+              </UserNameContainer>
+              <PasswordContainer>
+                <InputCheckbox
+                  type="checkbox"
+                  id="showPassword"
+                  onClick={this.onClickChangeStatus}
+                />
+                <LabelShowPassword htmlFor="showPassword">
+                  Show Password
+                </LabelShowPassword>
+              </PasswordContainer>
+              <ButtonLogin type="submit">Login</ButtonLogin>
+            </LoginContainer>
+          </LoginPage>
         ) : (
-          <LoginContainerDark>
-            <Image
-              src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png"
-              alt="website logo"
-            />
-          </LoginContainerDark>
+          <LoginPageDark>
+            <LoginContainerDark>
+              <Image
+                src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png"
+                alt="website logo"
+              />
+              <UserNameContainer>
+                <LabelDark htmlFor="usernameDark">USERNAME</LabelDark>
+                <InputDark
+                  type="text"
+                  id="userName"
+                  placeholder="Username"
+                  value={userName}
+                  onChange={this.onChangeUserName}
+                />
+              </UserNameContainer>
+              <UserNameContainer>
+                <LabelDark htmlFor="passwordDark">PASSWORD</LabelDark>
+                <InputDark
+                  type="password"
+                  id="passwordDark"
+                  placeholder="Password"
+                  value={password}
+                  onChange={this.onChangePassword}
+                />
+              </UserNameContainer>
+              <PasswordContainer>
+                <InputCheckbox
+                  type="checkbox"
+                  id="showPassword"
+                  onClick={this.onClickChangeStatus}
+                />
+                <LabelShowPasswordDark htmlFor="showPassword">
+                  Show Password
+                </LabelShowPasswordDark>
+              </PasswordContainer>
+              <ButtonLogin type="submit">Login</ButtonLogin>
+            </LoginContainerDark>
+          </LoginPageDark>
         )}
-      </LoginPage>
+      </>
     )
   }
 }

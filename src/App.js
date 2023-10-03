@@ -7,7 +7,7 @@ import ThemeContext from './context/ThemeContext'
 // Replace your code here
 
 class App extends Component {
-  state = {lightTheme: true}
+  state = {lightTheme: false}
 
   changeTheme = () => {
     this.setState(prevState => ({lightTheme: !prevState.theme}))
