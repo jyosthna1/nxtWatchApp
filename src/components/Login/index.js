@@ -1,4 +1,5 @@
 import {Component} from 'react'
+import Cookies from 'js-cookie'
 import {
   LoginContainer,
   Image,
@@ -19,7 +20,13 @@ import {
 import ThemeContext from '../../context/ThemeContext'
 
 class LoginDetails extends Component {
-  state = {userName: '', password: '', showPassword: false}
+  state = {
+    userName: '',
+    password: '',
+    showPassword: false,
+    errorMsg: '',
+    showSubmitError: false,
+  }
 
   onChangeUserName = event => {
     this.setState({userName: event.target.value})
@@ -33,15 +40,44 @@ class LoginDetails extends Component {
     this.setState(prevState => ({showPassword: !prevState.showPassword}))
   }
 
+  onsubmitSuccess = jwtToken => {
+    Cookies.set('jwt_token', jwtToken, {expires: 1, path: '/'})
+  }
+
+  errorMsg = errorMsg => {
+    this.setState({errorMsg, showSubmitError: true})
+  }
+
+  onSubmitUserDetails = async event => {
+    event.preventDefault()
+    const {userName, password} = this.state
+    const userDetails = {username: userName, password}
+    const url = 'https://apis.ccbp.in/login'
+    const options = {method: 'POST', body: JSON.stringify(userDetails)}
+    const response = await fetch(url, options)
+    const data = await response.json()
+    if (response.ok === true) {
+      this.onsubmitSuccess(data.jwt_token)
+    } else {
+      this.errorMsg(data.error_msg)
+    }
+  }
+
   render() {
     const {lightTheme} = this.props
-    const {userName, password, showPassword} = this.state
+    const {
+      userName,
+      password,
+      showPassword,
+      errorMsg,
+      showSubmitError,
+    } = this.state
 
     return (
       <>
         {lightTheme ? (
           <LoginPage>
-            <LoginContainer>
+            <LoginContainer onSubmit={this.onSubmitUserDetails}>
               <Image
                 src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
                 alt="website logo"
@@ -91,7 +127,7 @@ class LoginDetails extends Component {
           </LoginPage>
         ) : (
           <LoginPageDark>
-            <LoginContainerDark>
+            <LoginContainerDark onSubmit={this.onSubmitUserDetails}>
               <Image
                 src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png"
                 alt="website logo"

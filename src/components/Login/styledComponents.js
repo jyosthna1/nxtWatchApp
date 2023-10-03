@@ -91,7 +91,7 @@ export const LoginPageDark = styled.div`
   justify-content: center;
   align-items: center;
 `
-export const LoginContainerDark = styled.div`
+export const LoginContainerDark = styled.form`
   background-color: #1e293b;
   width: 300px;
   display: flex;
