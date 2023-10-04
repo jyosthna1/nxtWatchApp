@@ -1,20 +1,5 @@
 import {FaMoon} from 'react-icons/fa'
 import {GiHamburgerMenu} from 'react-icons/gi'
-import {FiLogOut} from 'react-icons/fi'
-import ThemeContext from '../../context/ThemeContext'
-import {
-  NavBarContainer,
-  WebsiteLogo,
-  MenuBarContainer,
-  ThemeButton,
-  LogoutButton,
-  LogoutButtonLarge,
-  ProfileButton,
-  ProfileImage,
-} from './styledComponent'
-
-import {FaMoon} from 'react-icons/fa'
-import {GiHamburgerMenu} from 'react-icons/gi'
 import {FiLogOut, FiSun} from 'react-icons/fi'
 import Cookies from 'js-cookie'
 
@@ -36,7 +21,7 @@ const Header = props => {
   const renderHeader = () => (
     <ThemeContext.Consumer>
       {value => {
-        const {theme, changeTheme} = value
+        const {lightTheme, changeTheme} = value
 
         const onClickTheme = () => {
           changeTheme()
@@ -50,7 +35,7 @@ const Header = props => {
 
         return (
           <>
-            {theme ? (
+            {lightTheme ? (
               <NavBarContainer>
                 <WebsiteLogo
                   src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
@@ -116,4 +101,5 @@ const Header = props => {
   )
   return <>{renderHeader()}</>
 }
+
 export default Header

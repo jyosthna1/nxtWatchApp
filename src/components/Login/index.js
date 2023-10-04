@@ -16,6 +16,7 @@ import {
   InputLight,
   InputDark,
   LabelShowPasswordDark,
+  ErrorMsg,
 } from './styledComponents'
 import ThemeContext from '../../context/ThemeContext'
 
@@ -41,7 +42,7 @@ class LoginDetails extends Component {
   }
 
   onsubmitSuccess = jwtToken => {
-    Cookies.set('jwt_token', jwtToken, {expires: 1, path: '/'})
+    Cookies.set('jwt_token', jwtToken, {expires: 1})
   }
 
   errorMsg = errorMsg => {
@@ -64,7 +65,12 @@ class LoginDetails extends Component {
   }
 
   render() {
-    const {lightTheme} = this.props
+    const {lightTheme, history} = this.props
+
+    const token = Cookies.get('jwt_token')
+    if (token !== undefined) {
+      history.replace('/')
+    }
     const {
       userName,
       password,
@@ -123,6 +129,7 @@ class LoginDetails extends Component {
                 </LabelShowPassword>
               </PasswordContainer>
               <ButtonLogin type="submit">Login</ButtonLogin>
+              {showSubmitError && <ErrorMsg>*{errorMsg}</ErrorMsg>}
             </LoginContainer>
           </LoginPage>
         ) : (
@@ -163,6 +170,7 @@ class LoginDetails extends Component {
                 </LabelShowPasswordDark>
               </PasswordContainer>
               <ButtonLogin type="submit">Login</ButtonLogin>
+              {showSubmitError && <ErrorMsg>*{errorMsg}</ErrorMsg>}
             </LoginContainerDark>
           </LoginPageDark>
         )}
@@ -171,11 +179,12 @@ class LoginDetails extends Component {
   }
 }
 
-const Login = () => (
+const Login = props => (
   <ThemeContext.Consumer>
     {value => {
       const {lightTheme} = value
-      return <LoginDetails lightTheme={lightTheme} />
+      const {history} = props
+      return <LoginDetails lightTheme={lightTheme} history={history} />
     }}
   </ThemeContext.Consumer>
 )

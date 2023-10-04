@@ -2,6 +2,7 @@ import './App.css'
 import {Switch, Route} from 'react-router-dom'
 import {Component} from 'react'
 import Login from './components/Login'
+import Header from './components/Header'
 import ThemeContext from './context/ThemeContext'
 
 // Replace your code here
@@ -24,6 +25,7 @@ class App extends Component {
       >
         <Switch>
           <Route exact path="/login" component={Login} />
+          <Route exact path="/" component={Header} />
         </Switch>
       </ThemeContext.Provider>
     )

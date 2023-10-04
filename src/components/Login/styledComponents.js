@@ -116,3 +116,12 @@ export const LabelShowPasswordDark = styled.label`
   font-weight: bold;
   padding-left: 5px;
 `
+export const ErrorMsg = styled.p`
+  font-family: 'Roboto';
+  font-size: 11px;
+  color: #ff0000;
+  margin: 0px;
+  align-self: flex-start;
+  padding-left: 13px;
+  padding-bottom: 14px;
+`
