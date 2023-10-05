@@ -39,6 +39,7 @@ export const LogoutButtonLarge = styled.button`
   color: #3b82f6;
   font-family: 'Roboto';
   font-weight: 600;
+  cursor: pointer;
   @media screen and (min-width: 768px) {
     display: flex;
   }
@@ -78,6 +79,7 @@ export const LogoutButtonLargeDark = styled.button`
   color: #ffffff;
   font-family: 'Roboto';
   font-weight: 600;
+  cursor: pointer;
   @media screen and (min-width: 768px) {
     display: flex;
   }

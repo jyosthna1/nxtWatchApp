@@ -1,4 +1,5 @@
 import {Component} from 'react'
+import {Redirect} from 'react-router-dom'
 import Cookies from 'js-cookie'
 import {
   LoginContainer,
@@ -69,7 +70,7 @@ class LoginDetails extends Component {
 
     const token = Cookies.get('jwt_token')
     if (token !== undefined) {
-      history.replace('/')
+      return <Redirect to="/" />
     }
     const {
       userName,
