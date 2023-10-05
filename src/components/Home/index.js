@@ -1,5 +1,5 @@
 import {Component} from 'react'
-import {AiOutlineClose} from 'react-icons/ai'
+import {AiOutlineClose, AiFillHome} from 'react-icons/ai'
 import Cookies from 'js-cookie'
 import Header from '../Header'
 import {
@@ -9,6 +9,10 @@ import {
   CloseButton,
   Heading,
   GetItNowButton,
+  LeftBannerVideosContainer,
+  LeftBannerIcons,
+  HomeIconContainer,
+  PageName,
 } from './styledComponents'
 
 import ThemeContext from '../../context/ThemeContext'
@@ -97,11 +101,17 @@ class HomeClass extends Component {
     const {lightTheme} = this.props
 
     return (
-      <>
+      <LeftBannerVideosContainer>
+        <LeftBannerIcons>
+          <HomeIconContainer>
+            <AiFillHome />
+            <PageName>Home</PageName>
+          </HomeIconContainer>
+        </LeftBannerIcons>
         {bannerClose && (
           <RenderBanner onClickBannerClose={this.onClickBannerClose} />
         )}
-      </>
+      </LeftBannerVideosContainer>
     )
   }
 }
