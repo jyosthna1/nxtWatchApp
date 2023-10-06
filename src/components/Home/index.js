@@ -1,5 +1,9 @@
 import {Component} from 'react'
+import {Link} from 'react-router-dom'
 import {AiOutlineClose, AiFillHome} from 'react-icons/ai'
+import {HiFire} from 'react-icons/hi'
+import {GiGamepad} from 'react-icons/gi'
+import {MdPlaylistAdd} from 'react-icons/md'
 import Cookies from 'js-cookie'
 import Header from '../Header'
 import {
@@ -13,6 +17,7 @@ import {
   LeftBannerIcons,
   HomeIconContainer,
   PageName,
+  IconButton,
 } from './styledComponents'
 
 import ThemeContext from '../../context/ThemeContext'
@@ -37,14 +42,16 @@ const RenderBanner = props => {
         <BannerAndClose>
           <LogoInBanner
             src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
-            alt="website logo"
+            alt="nxt watch logo"
           />
           <CloseButton>
             <AiOutlineClose size="20px" onClick={onClickBanner} />
           </CloseButton>
         </BannerAndClose>
         <Heading>Buy Nxt Watch Premium prepaid plans with UPI</Heading>
-        <GetItNowButton type="button">Get It Now</GetItNowButton>
+        <GetItNowButton type="button" data-testid="close">
+          Get It Now
+        </GetItNowButton>
       </BannerContainer>
     </>
   )
@@ -97,15 +104,37 @@ class HomeClass extends Component {
 
   render() {
     const {bannerClose, videosList} = this.state
-    console.log(videosList)
+
     const {lightTheme} = this.props
 
     return (
-      <LeftBannerVideosContainer>
+      <LeftBannerVideosContainer lightTheme={lightTheme}>
         <LeftBannerIcons>
+          <HomeIconContainer to="/" data-testid="home">
+            <HomeIconContainer>
+              <IconButton>
+                <AiFillHome size="15px" />
+              </IconButton>
+              <PageName lightTheme={lightTheme}>Home</PageName>
+            </HomeIconContainer>
+          </HomeIconContainer>
           <HomeIconContainer>
-            <AiFillHome />
-            <PageName>Home</PageName>
+            <IconButton>
+              <HiFire size="15px" />
+            </IconButton>
+            <PageName lightTheme={lightTheme}>Trending</PageName>
+          </HomeIconContainer>
+          <HomeIconContainer>
+            <IconButton>
+              <GiGamepad size="15px" />
+            </IconButton>
+            <PageName lightTheme={lightTheme}>Gaming</PageName>
+          </HomeIconContainer>
+          <HomeIconContainer>
+            <IconButton>
+              <MdPlaylistAdd size="15px" />
+            </IconButton>
+            <PageName lightTheme={lightTheme}>Saved videos</PageName>
           </HomeIconContainer>
         </LeftBannerIcons>
         {bannerClose && (

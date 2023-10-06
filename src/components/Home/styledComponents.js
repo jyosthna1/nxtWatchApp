@@ -2,13 +2,15 @@ import styled from 'styled-components'
 
 export const LeftBannerVideosContainer = styled.div`
   display: flex;
+  background-color: ${props => (props.lightTheme ? '#ffffff' : '#181818')};
 `
 
 export const LeftBannerIcons = styled.div`
   display: flex;
   flex-direction: column;
-  width: 10vw;
-  margin: 20px;
+  width: 13vw;
+  margin-top: 20px;
+  margin-right: 20px;
   @media screen and (min-width: 768px) {
     display: flex;
   }
@@ -16,21 +18,35 @@ export const LeftBannerIcons = styled.div`
     display: none;
   }
 `
-export const HomeIconContainer = styled.div`
+export const HomeIconContainer = styled.button`
   display: flex;
-
   align-items: center;
+  border-width: 0px;
+  outline: none;
+  cursor: pointer;
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 20px;
+  background-color: transparent;
+`
+export const IconButton = styled.button`
+  outline: none;
+  border-width: 0px;
+  margin-right: 12px;
+  background-color: transparent;
+  color: #606060;
 `
 export const PageName = styled.p`
   font-family: 'Roboto';
-  font-size: 18px;
-  color: black;
+  font-size: 12px;
+  color: ${props => (props.lightTheme ? '#000000' : '#ffffff')};
 `
 export const BannerContainer = styled.div`
   background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png');
   height: 26vh;
   background-size: cover;
   padding: 22px;
+  flex-grow: 1;
 `
 export const BannerAndClose = styled.div`
   display: flex;
