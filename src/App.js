@@ -2,14 +2,13 @@ import './App.css'
 import {Switch, Route} from 'react-router-dom'
 import {Component} from 'react'
 import Login from './components/Login'
-import Header from './components/Header'
 import Home from './components/Home'
 import ThemeContext from './context/ThemeContext'
 
 // Replace your code here
 
 class App extends Component {
-  state = {lightTheme: true}
+  state = {lightTheme: false}
 
   changeTheme = () => {
     this.setState(prevState => ({lightTheme: !prevState.theme}))

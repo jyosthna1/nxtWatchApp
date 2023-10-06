@@ -53,6 +53,18 @@ export const BannerContainer = styled.div`
 `
 export const SearchContainer = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 30px;
+  width: 400px;
+  border: 1px solid #cccccc;
+  background-color: ${props => (props.lightTheme ? '#ebebeb' : '#000000')};
+`
+export const SearchButton = styled.button`
+  border-width: 0px;
+  height: 100%;
+  flex-grow: 1;
+  background-color: ${props => (props.lightTheme ? '#f4f4f4' : '#424242')};
 `
 export const BannerAndSearch = styled.div`
   display: flex;
@@ -61,6 +73,11 @@ export const BannerAndSearch = styled.div`
 `
 export const SearchInput = styled.input`
   font-family: 'Roboto';
+  padding: 10px;
+  border: none;
+  outline: none;
+  height: 100%;
+  width: 80%;
 `
 export const SearchAndVideoContainer = styled.div`
   padding: 20px;

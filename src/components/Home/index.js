@@ -1,6 +1,6 @@
 import {Component} from 'react'
 import {Link} from 'react-router-dom'
-import {AiOutlineClose, AiFillHome} from 'react-icons/ai'
+import {AiOutlineClose, AiFillHome, AiOutlineSearch} from 'react-icons/ai'
 import {HiFire} from 'react-icons/hi'
 import {GiGamepad} from 'react-icons/gi'
 import {MdPlaylistAdd} from 'react-icons/md'
@@ -22,6 +22,7 @@ import {
   SearchInput,
   BannerAndSearch,
   SearchAndVideoContainer,
+  SearchButton,
 } from './styledComponents'
 
 import ThemeContext from '../../context/ThemeContext'
@@ -142,8 +143,11 @@ class HomeClass extends Component {
               <RenderBanner onClickBannerClose={this.onClickBannerClose} />
             )}
             <SearchAndVideoContainer lightTheme={lightTheme}>
-              <SearchContainer>
+              <SearchContainer lightTheme={lightTheme}>
                 <SearchInput type="search" placeholder="Search" />
+                <SearchButton type="button" lightTheme={lightTheme}>
+                  <AiOutlineSearch size="15" />
+                </SearchButton>
               </SearchContainer>
               {this.renderVideosPage()}
             </SearchAndVideoContainer>
