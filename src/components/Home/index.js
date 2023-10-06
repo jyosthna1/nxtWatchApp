@@ -18,6 +18,10 @@ import {
   HomeIconContainer,
   PageName,
   IconButton,
+  SearchContainer,
+  SearchInput,
+  BannerAndSearch,
+  SearchAndVideoContainer,
 } from './styledComponents'
 
 import ThemeContext from '../../context/ThemeContext'
@@ -102,45 +106,50 @@ class HomeClass extends Component {
     this.setState(prevState => ({bannerClose: !prevState.bannerClose}))
   }
 
+  renderVideosList = () => {}
+
+  renderVideosPage = () => {
+    const {apiStatus} = this.setState
+    switch (apiStatus) {
+      case apiStatusConstants.success:
+        return this.renderVideosList()
+
+      default:
+        return null
+    }
+  }
+
   render() {
     const {bannerClose, videosList} = this.state
 
     const {lightTheme} = this.props
 
     return (
-      <LeftBannerVideosContainer lightTheme={lightTheme}>
-        <LeftBannerIcons>
-          <HomeIconContainer to="/" data-testid="home">
-            <HomeIconContainer>
-              <IconButton>
-                <AiFillHome size="15px" />
-              </IconButton>
-              <PageName lightTheme={lightTheme}>Home</PageName>
+      <>
+        <LeftBannerVideosContainer lightTheme={lightTheme}>
+          <LeftBannerIcons>
+            <HomeIconContainer to="/" data-testid="home">
+              <HomeIconContainer>
+                <IconButton>
+                  <AiFillHome size="15px" />
+                </IconButton>
+                <PageName lightTheme={lightTheme}>Home</PageName>
+              </HomeIconContainer>
             </HomeIconContainer>
-          </HomeIconContainer>
-          <HomeIconContainer>
-            <IconButton>
-              <HiFire size="15px" />
-            </IconButton>
-            <PageName lightTheme={lightTheme}>Trending</PageName>
-          </HomeIconContainer>
-          <HomeIconContainer>
-            <IconButton>
-              <GiGamepad size="15px" />
-            </IconButton>
-            <PageName lightTheme={lightTheme}>Gaming</PageName>
-          </HomeIconContainer>
-          <HomeIconContainer>
-            <IconButton>
-              <MdPlaylistAdd size="15px" />
-            </IconButton>
-            <PageName lightTheme={lightTheme}>Saved videos</PageName>
-          </HomeIconContainer>
-        </LeftBannerIcons>
-        {bannerClose && (
-          <RenderBanner onClickBannerClose={this.onClickBannerClose} />
-        )}
-      </LeftBannerVideosContainer>
+          </LeftBannerIcons>
+          <BannerAndSearch>
+            {bannerClose && (
+              <RenderBanner onClickBannerClose={this.onClickBannerClose} />
+            )}
+            <SearchAndVideoContainer lightTheme={lightTheme}>
+              <SearchContainer>
+                <SearchInput type="search" placeholder="Search" />
+              </SearchContainer>
+              {this.renderVideosPage()}
+            </SearchAndVideoContainer>
+          </BannerAndSearch>
+        </LeftBannerVideosContainer>
+      </>
     )
   }
 }

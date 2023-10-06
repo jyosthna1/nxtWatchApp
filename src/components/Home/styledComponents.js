@@ -41,12 +41,30 @@ export const PageName = styled.p`
   font-size: 12px;
   color: ${props => (props.lightTheme ? '#000000' : '#ffffff')};
 `
+export const bannerAndVideos = styled.div`
+  background-color: #f9f9f9;
+`
+
 export const BannerContainer = styled.div`
   background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png');
   height: 26vh;
   background-size: cover;
   padding: 22px;
+`
+export const SearchContainer = styled.div`
+  display: flex;
+`
+export const BannerAndSearch = styled.div`
+  display: flex;
+  flex-direction: column;
   flex-grow: 1;
+`
+export const SearchInput = styled.input`
+  font-family: 'Roboto';
+`
+export const SearchAndVideoContainer = styled.div`
+  padding: 20px;
+  background-color: ${props => (props.lightTheme ? '#f9f9f9 ' : '#181818')};
 `
 export const BannerAndClose = styled.div`
   display: flex;
