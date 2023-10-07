@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const ListItem = styled.li`
-  margin-bottom: 20px;
+  margin-bottom: 50px;
   width: 300px;
   margin-right: 20px;
   @media screen and (max-width: 767px) {
@@ -20,4 +20,35 @@ export const ChannelLogoAndDetailsContainer = styled.div`
 export const ProfileImage = styled.img`
   height: 40px;
   width: 40px;
+`
+export const InformationContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+`
+export const Tittle = styled.p`
+  font-family: 'Roboto';
+  font-size: 14px;
+  margin-top: 0px;
+`
+export const ChannelName = styled.p`
+  font-family: 'Roboto';
+  font-size: 13px;
+  line-height: 26px;
+  margin-top: 0px;
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+`
+export const ViewAndYearContainer = styled.div`
+  display: flex;
+  align-items: center;
+`
+export const ChannelNameSmallSize = styled.p`
+  font-family: 'Roboto';
+  font-size: 13px;
+  margin-top: 0px;
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
 `
