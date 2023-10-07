@@ -57,8 +57,8 @@ export const SearchContainer = styled.div`
   justify-content: space-between;
   height: 30px;
   width: 400px;
-  border: 1px solid #cccccc;
-  background-color: ${props => (props.lightTheme ? '#ebebeb' : '#000000')};
+  border: 1px solid;
+  border-color: ${props => (props.lightTheme ? '#cccccc' : '#424242')};
 `
 export const SearchButton = styled.button`
   border-width: 0px;
@@ -73,11 +73,13 @@ export const BannerAndSearch = styled.div`
 `
 export const SearchInput = styled.input`
   font-family: 'Roboto';
+  color: ${props => (props.lightTheme ? '#000000' : '#ffffff')};
   padding: 10px;
   border: none;
   outline: none;
   height: 100%;
   width: 80%;
+  background-color: ${props => (props.lightTheme ? '#ebebeb' : '#000000')};
 `
 export const SearchAndVideoContainer = styled.div`
   padding: 20px;
@@ -112,4 +114,11 @@ export const GetItNowButton = styled.button`
   padding: 6px 10px 6px 10px;
   background-color: transparent;
   font-size: 14px;
+`
+export const UnOrderVideoList = styled.ul`
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0px;
+  margin-top: 30px;
 `

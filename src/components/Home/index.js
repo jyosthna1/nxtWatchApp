@@ -6,6 +6,7 @@ import {GiGamepad} from 'react-icons/gi'
 import {MdPlaylistAdd} from 'react-icons/md'
 import Cookies from 'js-cookie'
 import Header from '../Header'
+import VideoCard from '../VideoCard'
 import {
   BannerContainer,
   LogoInBanner,
@@ -23,6 +24,7 @@ import {
   BannerAndSearch,
   SearchAndVideoContainer,
   SearchButton,
+  UnOrderVideoList,
 } from './styledComponents'
 
 import ThemeContext from '../../context/ThemeContext'
@@ -107,10 +109,19 @@ class HomeClass extends Component {
     this.setState(prevState => ({bannerClose: !prevState.bannerClose}))
   }
 
-  renderVideosList = () => {}
+  renderVideosList = () => {
+    const {videosList} = this.state
+    return (
+      <UnOrderVideoList>
+        {videosList.map(eachItem => (
+          <VideoCard key={eachItem.id} details={eachItem} />
+        ))}
+      </UnOrderVideoList>
+    )
+  }
 
   renderVideosPage = () => {
-    const {apiStatus} = this.setState
+    const {apiStatus} = this.state
     switch (apiStatus) {
       case apiStatusConstants.success:
         return this.renderVideosList()
@@ -144,7 +155,11 @@ class HomeClass extends Component {
             )}
             <SearchAndVideoContainer lightTheme={lightTheme}>
               <SearchContainer lightTheme={lightTheme}>
-                <SearchInput type="search" placeholder="Search" />
+                <SearchInput
+                  type="search"
+                  placeholder="Search"
+                  lightTheme={lightTheme}
+                />
                 <SearchButton type="button" lightTheme={lightTheme}>
                   <AiOutlineSearch size="15" />
                 </SearchButton>
