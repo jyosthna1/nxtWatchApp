@@ -89,12 +89,15 @@ class HomeClass extends Component {
     const response = await fetch(url, options)
     if (response.ok === true) {
       const videosData = await response.json()
+
       const updatedData = videosData.videos.map(eachVideo => ({
         id: eachVideo.id,
         publishedAt: eachVideo.published_at,
         thumbnailUrl: eachVideo.thumbnail_url,
         title: eachVideo.title,
         viewCount: eachVideo.view_count,
+        channelName: eachVideo.channel.name,
+        profileImageUrl: eachVideo.channel.profile_image_url,
       }))
       this.setState({
         videosList: updatedData,
@@ -133,7 +136,6 @@ class HomeClass extends Component {
 
   render() {
     const {bannerClose, videosList} = this.state
-
     const {lightTheme} = this.props
 
     return (
@@ -160,7 +162,11 @@ class HomeClass extends Component {
                   placeholder="Search"
                   lightTheme={lightTheme}
                 />
-                <SearchButton type="button" lightTheme={lightTheme}>
+                <SearchButton
+                  type="button"
+                  data-testid="searchButton"
+                  lightTheme={lightTheme}
+                >
                   <AiOutlineSearch size="15" />
                 </SearchButton>
               </SearchContainer>

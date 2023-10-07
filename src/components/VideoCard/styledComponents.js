@@ -13,3 +13,11 @@ export const VideoImage = styled.img`
   width: 100%;
   margin: 0px;
 `
+export const ChannelLogoAndDetailsContainer = styled.div`
+  display: flex;
+  margin-top: 10px;
+`
+export const ProfileImage = styled.img`
+  height: 40px;
+  width: 40px;
+`

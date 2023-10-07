@@ -1,13 +1,27 @@
-import {ListItem, VideoImage} from './styledComponents'
+import {
+  ListItem,
+  VideoImage,
+  ChannelLogoAndDetailsContainer,
+  ProfileImage,
+} from './styledComponents'
 
 const VideoCard = props => {
   const {details} = props
-  const {publishedAt, thumbnailUrl, title, viewCount} = details
+  const {
+    publishedAt,
+    thumbnailUrl,
+    title,
+    viewCount,
+    channelName,
+    profileImageUrl,
+  } = details
 
   return (
     <ListItem>
       <VideoImage src={thumbnailUrl} alt="video thumbnail" />
-      <p>{title}</p>
+      <ChannelLogoAndDetailsContainer>
+        <ProfileImage src={profileImageUrl} alt="channel logo" />
+      </ChannelLogoAndDetailsContainer>
     </ListItem>
   )
 }
