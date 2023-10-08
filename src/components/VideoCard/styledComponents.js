@@ -28,14 +28,17 @@ export const InformationContainer = styled.div`
 `
 export const Tittle = styled.p`
   font-family: 'Roboto';
-  font-size: 14px;
+  font-size: 13px;
+  line-height: 20px;
   margin-top: 0px;
+  color: ${props => (props.lightTheme ? '#313131' : '#f4f4f4')};
 `
 export const ChannelName = styled.p`
   font-family: 'Roboto';
   font-size: 13px;
   line-height: 26px;
   margin-top: 0px;
+  color: ${props => (props.lightTheme ? '#313131' : '#606060')};
   @media screen and (max-width: 767px) {
     display: none;
   }
@@ -48,6 +51,7 @@ export const ChannelNameSmallSize = styled.p`
   font-family: 'Roboto';
   font-size: 13px;
   margin-top: 0px;
+  color: ${props => (props.lightTheme ? '#313131' : '#606060')};
   @media screen and (min-width: 768px) {
     display: none;
   }

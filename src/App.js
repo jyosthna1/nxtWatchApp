@@ -4,11 +4,12 @@ import {Component} from 'react'
 import Login from './components/Login'
 import Home from './components/Home'
 import ThemeContext from './context/ThemeContext'
+import Trending from './components/Trending'
 
 // Replace your code here
 
 class App extends Component {
-  state = {lightTheme: true}
+  state = {lightTheme: false}
 
   changeTheme = () => {
     this.setState(prevState => ({lightTheme: !prevState.theme}))
@@ -26,6 +27,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/login" component={Login} />
           <Route exact path="/" component={Home} />
+          <Route exact path="/trending" component={Trending} />
         </Switch>
       </ThemeContext.Provider>
     )
