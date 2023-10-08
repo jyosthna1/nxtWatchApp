@@ -1,9 +1,19 @@
 import {Component} from 'react'
-
+import {AiFillHome} from 'react-icons/ai'
 import {HiFire} from 'react-icons/hi'
 import Header from '../Header'
 import ThemeContext from '../../context/ThemeContext'
-import {TrendingContainer, TrendingIcon} from './styledComponents'
+import {
+  TrendingPageContainer,
+  TrendingContainer,
+  TrendingIcon,
+  SideBarAndTrendContainer,
+  LeftBannerVideosContainer,
+  LeftBannerIcons,
+  HomeIconContainer,
+  IconButton,
+  PageName,
+} from './styledComponents'
 
 class TrendingPage extends Component {
   render() {
@@ -25,7 +35,21 @@ const Trending = () => (
       return (
         <>
           <Header />
-          <TrendingPage lightTheme={lightTheme} />
+          <SideBarAndTrendContainer>
+            <LeftBannerVideosContainer lightTheme={lightTheme}>
+              <LeftBannerIcons>
+                <HomeIconContainer to="/" data-testid="home">
+                  <HomeIconContainer>
+                    <IconButton>
+                      <AiFillHome size="15px" />
+                    </IconButton>
+                    <PageName lightTheme={lightTheme}>Home</PageName>
+                  </HomeIconContainer>
+                </HomeIconContainer>
+              </LeftBannerIcons>
+            </LeftBannerVideosContainer>
+            <TrendingPage lightTheme={lightTheme} />
+          </SideBarAndTrendContainer>
         </>
       )
     }}
