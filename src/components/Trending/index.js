@@ -13,17 +13,20 @@ import {
   HomeIconContainer,
   IconButton,
   PageName,
+  TrendingIconAndVideos,
 } from './styledComponents'
 
 class TrendingPage extends Component {
   render() {
     const {lightTheme} = this.props
     return (
-      <TrendingContainer lightTheme={lightTheme}>
-        <TrendingIcon type="button">
-          <HiFire />
-        </TrendingIcon>
-      </TrendingContainer>
+      <TrendingIconAndVideos>
+        <TrendingContainer lightTheme={lightTheme}>
+          <TrendingIcon type="button">
+            <HiFire />
+          </TrendingIcon>
+        </TrendingContainer>
+      </TrendingIconAndVideos>
     )
   }
 }
