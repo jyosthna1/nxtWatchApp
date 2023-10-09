@@ -4,9 +4,11 @@ import {AiOutlineClose, AiFillHome, AiOutlineSearch} from 'react-icons/ai'
 import {HiFire} from 'react-icons/hi'
 import {GiGamepad} from 'react-icons/gi'
 import {MdPlaylistAdd} from 'react-icons/md'
+import Loader from 'react-loader-spinner'
 import Cookies from 'js-cookie'
 import Header from '../Header'
 import VideoCard from '../VideoCard'
+import FailureView from '../FailureView'
 import {
   BannerContainer,
   LogoInBanner,
@@ -25,6 +27,7 @@ import {
   SearchAndVideoContainer,
   SearchButton,
   UnOrderVideoList,
+  LoaderContainer,
 } from './styledComponents'
 
 import ThemeContext from '../../context/ThemeContext'
@@ -86,7 +89,7 @@ class HomeClass extends Component {
       },
       method: 'GET',
     }
-    const response = await fetch(url, options)
+    const response = fetch(url, options)
     if (response.ok === true) {
       const videosData = await response.json()
 
@@ -114,6 +117,7 @@ class HomeClass extends Component {
 
   renderVideosList = () => {
     const {videosList} = this.state
+
     return (
       <UnOrderVideoList>
         {videosList.map(eachItem => (
@@ -123,11 +127,23 @@ class HomeClass extends Component {
     )
   }
 
+  renderLoadingView = () => (
+    <LoaderContainer data-testid="loader">
+      <Loader type="ThreeDots" color="blue" height="50" width="50" />
+    </LoaderContainer>
+  )
+
+  renderFailureView = () => <FailureView getVideosCart={this.getVideosCart} />
+
   renderVideosPage = () => {
     const {apiStatus} = this.state
     switch (apiStatus) {
+      case apiStatusConstants.inProgress:
+        return this.renderLoadingView()
       case apiStatusConstants.success:
         return this.renderVideosList()
+      case apiStatusConstants.failure:
+        return this.renderFailureView()
 
       default:
         return null

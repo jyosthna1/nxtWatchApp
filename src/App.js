@@ -5,14 +5,15 @@ import Login from './components/Login'
 import Home from './components/Home'
 import ThemeContext from './context/ThemeContext'
 import Trending from './components/Trending'
+import ProtectedRoute from './components/ProtectedRoute'
 
 // Replace your code here
 
 class App extends Component {
-  state = {lightTheme: false}
+  state = {lightTheme: true}
 
   changeTheme = () => {
-    this.setState(prevState => ({lightTheme: !prevState.theme}))
+    this.setState(prevState => ({lightTheme: !prevState.lightTheme}))
   }
 
   render() {
@@ -26,8 +27,8 @@ class App extends Component {
       >
         <Switch>
           <Route exact path="/login" component={Login} />
-          <Route exact path="/" component={Home} />
-          <Route exact path="/trending" component={Trending} />
+          <ProtectedRoute exact path="/" component={Home} />
+          <ProtectedRoute exact path="/trending" component={Trending} />
         </Switch>
       </ThemeContext.Provider>
     )

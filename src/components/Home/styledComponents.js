@@ -84,6 +84,7 @@ export const SearchInput = styled.input`
 export const SearchAndVideoContainer = styled.div`
   padding: 20px;
   background-color: ${props => (props.lightTheme ? '#f9f9f9 ' : '#181818')};
+  min-height: 900px;
 `
 export const BannerAndClose = styled.div`
   display: flex;
@@ -121,4 +122,8 @@ export const UnOrderVideoList = styled.ul`
   flex-wrap: wrap;
   padding: 0px;
   margin-top: 30px;
+`
+export const LoaderContainer = styled.div`
+  display: flex;
+  justify-content: center;
 `

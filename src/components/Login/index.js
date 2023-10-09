@@ -43,7 +43,9 @@ class LoginDetails extends Component {
   }
 
   onsubmitSuccess = jwtToken => {
+    const {history} = this.props
     Cookies.set('jwt_token', jwtToken, {expires: 1})
+    history.replace('/')
   }
 
   errorMsg = errorMsg => {
@@ -66,7 +68,7 @@ class LoginDetails extends Component {
   }
 
   render() {
-    const {lightTheme, history} = this.props
+    const {lightTheme} = this.props
 
     const token = Cookies.get('jwt_token')
     if (token !== undefined) {
