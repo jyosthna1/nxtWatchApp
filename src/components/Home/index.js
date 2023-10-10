@@ -9,6 +9,7 @@ import Cookies from 'js-cookie'
 import Header from '../Header'
 import VideoCard from '../VideoCard'
 import FailureView from '../FailureView'
+import SearchResults from '../SearchResults'
 import {
   BannerContainer,
   LogoInBanner,
@@ -72,6 +73,7 @@ class HomeClass extends Component {
     bannerClose: true,
     videosList: [],
     apiStatus: apiStatusConstants.initial,
+    searchInput: '',
   }
 
   componentDidMount() {
@@ -81,15 +83,16 @@ class HomeClass extends Component {
   getVideosCart = async () => {
     this.setState({apiStatus: apiStatusConstants.inProgress})
     const token = Cookies.get('jwt_token')
+    const {searchInput} = this.state
 
-    const url = 'https://apis.ccbp.in/videos/all?search='
+    const url = `https://apis.ccbp.in/videos/all?search=${searchInput}`
     const options = {
       headers: {
         Authorization: `Bearer ${token}`,
       },
       method: 'GET',
     }
-    const response = fetch(url, options)
+    const response = await fetch(url, options)
     if (response.ok === true) {
       const videosData = await response.json()
 
@@ -115,16 +118,27 @@ class HomeClass extends Component {
     this.setState(prevState => ({bannerClose: !prevState.bannerClose}))
   }
 
-  renderVideosList = () => {
+  renderSuccessView = () => {
     const {videosList} = this.state
+    const videosListLength = videosList.length !== 0
 
     return (
-      <UnOrderVideoList>
-        {videosList.map(eachItem => (
-          <VideoCard key={eachItem.id} details={eachItem} />
-        ))}
-      </UnOrderVideoList>
+      <>
+        {videosListLength ? (
+          <UnOrderVideoList>
+            {videosList.map(eachItem => (
+              <VideoCard key={eachItem.id} details={eachItem} />
+            ))}
+          </UnOrderVideoList>
+        ) : (
+          <SearchResults />
+        )}
+      </>
     )
+  }
+
+  onChangeSearchValue = event => {
+    this.setState({searchInput: event.target.value})
   }
 
   renderLoadingView = () => (
@@ -133,7 +147,7 @@ class HomeClass extends Component {
     </LoaderContainer>
   )
 
-  renderFailureView = () => <FailureView getVideosCart={this.getVideosCart} />
+  renderFailureView = () => <FailureView />
 
   renderVideosPage = () => {
     const {apiStatus} = this.state
@@ -141,7 +155,7 @@ class HomeClass extends Component {
       case apiStatusConstants.inProgress:
         return this.renderLoadingView()
       case apiStatusConstants.success:
-        return this.renderVideosList()
+        return this.renderSuccessView()
       case apiStatusConstants.failure:
         return this.renderFailureView()
 
@@ -150,8 +164,15 @@ class HomeClass extends Component {
     }
   }
 
+  onEnterSearchInput = event => {
+    if (event.key === 'Enter') {
+      this.getVideosCart()
+    }
+  }
+
   render() {
-    const {bannerClose, videosList} = this.state
+    const {bannerClose, videosList, searchInput} = this.state
+
     const {lightTheme} = this.props
 
     return (
@@ -177,6 +198,9 @@ class HomeClass extends Component {
                   type="search"
                   placeholder="Search"
                   lightTheme={lightTheme}
+                  value={searchInput}
+                  onChange={this.onChangeSearchValue}
+                  onKeyDown={this.onEnterSearchInput}
                 />
                 <SearchButton
                   type="button"

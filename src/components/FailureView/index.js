@@ -1,4 +1,6 @@
+import {Link} from 'react-router-dom'
 import ThemeContext from '../../context/ThemeContext'
+
 import {
   FailureContainer,
   FailureImage,
@@ -25,7 +27,9 @@ const FailureView = () => (
             We are having some trouble to complete some request. <br /> Please
             try again.
           </FailureInfo>
-          <RetryButton type="button">Retry</RetryButton>
+          <Link to="/">
+            <RetryButton type="button">Retry</RetryButton>
+          </Link>
         </FailureContainer>
       )
     }}
