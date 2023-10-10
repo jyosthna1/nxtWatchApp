@@ -10,6 +10,7 @@ import Header from '../Header'
 import VideoCard from '../VideoCard'
 import FailureView from '../FailureView'
 import SearchResults from '../SearchResults'
+import SideBar from '../SideBar'
 import {
   BannerContainer,
   LogoInBanner,
@@ -179,14 +180,7 @@ class HomeClass extends Component {
       <>
         <LeftBannerVideosContainer lightTheme={lightTheme}>
           <LeftBannerIcons>
-            <HomeIconContainer to="/" data-testid="home">
-              <HomeIconContainer>
-                <IconButton>
-                  <AiFillHome size="15px" />
-                </IconButton>
-                <PageName lightTheme={lightTheme}>Home</PageName>
-              </HomeIconContainer>
-            </HomeIconContainer>
+            <SideBar />
           </LeftBannerIcons>
           <BannerAndSearch>
             {bannerClose && (

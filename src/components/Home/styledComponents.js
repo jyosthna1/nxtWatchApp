@@ -8,9 +8,9 @@ export const LeftBannerVideosContainer = styled.div`
 export const LeftBannerIcons = styled.div`
   display: flex;
   flex-direction: column;
-  width: 13vw;
   margin-top: 20px;
-  margin-right: 20px;
+  width: 10vw;
+
   @media screen and (min-width: 768px) {
     display: flex;
   }
@@ -24,7 +24,7 @@ export const HomeIconContainer = styled.button`
   border-width: 0px;
   outline: none;
   cursor: pointer;
-  width: 100%;
+  width: 10vw;
   padding-left: 10px;
   padding-right: 20px;
   background-color: transparent;
