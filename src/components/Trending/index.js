@@ -1,6 +1,7 @@
 import {Component} from 'react'
 import {HiFire} from 'react-icons/hi'
 import Cookies from 'js-cookie'
+import {formatDistanceToNow} from 'date-fns'
 import Loader from 'react-loader-spinner'
 import Header from '../Header'
 import ThemeContext from '../../context/ThemeContext'
@@ -18,6 +19,12 @@ import {
   TrendingListItem,
   TrendingPageContainer,
   TrendingImage,
+  ChannelLogoAndDetailsContainer,
+  ProfileImage,
+  InformationContainer,
+  Tittle,
+  ChannelName,
+  ChannelNameSmallSize,
 } from './styledComponents'
 
 const apiStatusConstants = {
@@ -27,22 +34,41 @@ const apiStatusConstants = {
   inProgress: 'IN_PROGRESS',
 }
 
-const RenderTrendingVideos = props => {
-  const {details} = props
-  const {
-    publishedAt,
-    thumbnailUrl,
-    title,
-    viewCount,
-    channelName,
-    profileImageUrl,
-  } = details
-  return (
-    <TrendingListItem>
-      <TrendingImage src={thumbnailUrl} alt="d" />
-    </TrendingListItem>
-  )
-}
+const RenderTrendingVideos = props => (
+  <ThemeContext.Consumer>
+    {value => {
+      const {lightTheme} = value
+      const {details} = props
+      const {
+        publishedAt,
+        thumbnailUrl,
+        title,
+        viewCount,
+        channelName,
+        profileImageUrl,
+      } = details
+      const time = formatDistanceToNow(new Date(publishedAt))
+      return (
+        <TrendingListItem>
+          <TrendingImage src={thumbnailUrl} alt="video thumbnail" />
+          <ChannelLogoAndDetailsContainer>
+            <ProfileImage src={profileImageUrl} alt="channel logo" />
+            <InformationContainer>
+              <Tittle lightTheme={lightTheme}>{title}</Tittle>
+              <ChannelName>
+                {channelName} <br /> {viewCount} views . {time} ago
+              </ChannelName>
+              <ChannelNameSmallSize>
+                {channelName} . {viewCount} views . {time} ago
+              </ChannelNameSmallSize>
+            </InformationContainer>
+          </ChannelLogoAndDetailsContainer>
+        </TrendingListItem>
+      )
+    }}
+  </ThemeContext.Consumer>
+)
+
 class TrendingVideos extends Component {
   state = {apiStatus: apiStatusConstants.initial, trendingVideosList: []}
 

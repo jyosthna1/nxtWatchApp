@@ -12,7 +12,7 @@ export const LeftBannerIcons = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 20px;
-  width: 14vw;
+  width: 15vw;
 
   @media screen and (min-width: 768px) {
     display: flex;
@@ -57,6 +57,7 @@ export const IconTrendingButton = styled.button`
 `
 export const TrendingVideosContainer = styled.ul`
   list-style-type: none;
+  padding: 0px;
 `
 export const LoaderContainer = styled.div`
   display: flex;
@@ -66,12 +67,58 @@ export const TrendingListItem = styled.li`
   margin-bottom: 10px;
   display: flex;
   flex-direction: column;
+  width: 100%;
 `
 export const TrendingImage = styled.img`
   height: 200px;
-  width: 200px;
+
+  width: 100%;
 `
 export const TrendingContainer = styled.div`
   display: flex;
   min-height: 1100px;
+  width: 100vw;
+`
+export const ChannelLogoAndDetailsContainer = styled.div`
+  display: flex;
+  margin-top: 10px;
+  padding-left: 14px;
+  padding-right: 14px;
+`
+export const ProfileImage = styled.img`
+  height: 40px;
+  width: 40px;
+  margin-right: 10px;
+`
+export const InformationContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+`
+export const Tittle = styled.p`
+  font-family: 'Roboto';
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 20px;
+  margin-top: 0px;
+  color: ${props => (props.lightTheme ? '#313131' : '#f4f4f4')};
+`
+export const ChannelName = styled.p`
+  font-family: 'Roboto';
+  font-size: 13px;
+  line-height: 26px;
+  margin-top: 0px;
+  color: ${props => (props.lightTheme ? '#313131' : '#606060')};
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+`
+export const ChannelNameSmallSize = styled.p`
+  font-family: 'Roboto';
+  font-size: 13px;
+  margin-top: 0px;
+  color: ${props => (props.lightTheme ? '#313131' : '#606060')};
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
 `
