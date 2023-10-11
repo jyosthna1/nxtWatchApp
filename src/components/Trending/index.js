@@ -48,6 +48,7 @@ const RenderTrendingVideos = props => (
         profileImageUrl,
       } = details
       const time = formatDistanceToNow(new Date(publishedAt))
+
       return (
         <TrendingListItem>
           <TrendingImage src={thumbnailUrl} alt="video thumbnail" />

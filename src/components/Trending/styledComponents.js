@@ -68,11 +68,20 @@ export const TrendingListItem = styled.li`
   display: flex;
   flex-direction: column;
   width: 100%;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-direction: row;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+  }
 `
 export const TrendingImage = styled.img`
   height: 200px;
-
   width: 100%;
+  @media screen and (min-width: 768px) {
+    width: 30%;
+  }
 `
 export const TrendingContainer = styled.div`
   display: flex;
@@ -89,6 +98,9 @@ export const ProfileImage = styled.img`
   height: 40px;
   width: 40px;
   margin-right: 10px;
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
 `
 export const InformationContainer = styled.div`
   display: flex;
@@ -102,6 +114,9 @@ export const Tittle = styled.p`
   line-height: 20px;
   margin-top: 0px;
   color: ${props => (props.lightTheme ? '#313131' : '#f4f4f4')};
+  @media screen and (min-width: 767px) {
+    font-size: 18px;
+  }
 `
 export const ChannelName = styled.p`
   font-family: 'Roboto';
@@ -117,7 +132,7 @@ export const ChannelNameSmallSize = styled.p`
   font-family: 'Roboto';
   font-size: 13px;
   margin-top: 0px;
-  color: ${props => (props.lightTheme ? '#313131' : '#606060')};
+  color: ${props => (props.lightTheme ? '#313131' : '#cbd5e1')};
   @media screen and (min-width: 768px) {
     display: none;
   }

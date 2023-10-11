@@ -10,6 +10,7 @@ export const HomeIconContainer = styled.button`
   padding-left: 10px;
   padding-right: 20px;
   background-color: transparent;
+  text-decoration: none;
 `
 export const IconButton = styled.button`
   outline: none;
