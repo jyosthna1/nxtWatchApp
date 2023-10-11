@@ -1,5 +1,7 @@
 import {Component} from 'react'
 import {HiFire} from 'react-icons/hi'
+import Cookies from 'js-cookie'
+import Loader from 'react-loader-spinner'
 import Header from '../Header'
 import ThemeContext from '../../context/ThemeContext'
 import SideBar from '../SideBar'
@@ -11,14 +13,118 @@ import {
   PageIconContainer,
   PageName,
   IconTrendingButton,
+  TrendingVideosContainer,
+  LoaderContainer,
+  TrendingListItem,
+  TrendingPageContainer,
+  TrendingImage,
 } from './styledComponents'
+
+const apiStatusConstants = {
+  initial: 'INITIAL',
+  success: 'SUCCESS',
+  failure: 'FAILURE',
+  inProgress: 'IN_PROGRESS',
+}
+
+const RenderTrendingVideos = props => {
+  const {details} = props
+  const {
+    publishedAt,
+    thumbnailUrl,
+    title,
+    viewCount,
+    channelName,
+    profileImageUrl,
+  } = details
+  return (
+    <TrendingListItem>
+      <TrendingImage src={thumbnailUrl} alt="d" />
+    </TrendingListItem>
+  )
+}
+class TrendingVideos extends Component {
+  state = {apiStatus: apiStatusConstants.initial, trendingVideosList: []}
+
+  componentDidMount() {
+    this.getTrendingVideosData()
+  }
+
+  getTrendingVideosData = async () => {
+    this.setState({apiStatus: apiStatusConstants.inProgress})
+    const url = 'https://apis.ccbp.in/videos/trending'
+    const token = Cookies.get('jwt_token')
+    const options = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      method: 'GET',
+    }
+    const response = await fetch(url, options)
+    if (response.ok) {
+      const trendingVideosData = await response.json()
+
+      const updatedData = trendingVideosData.videos.map(eachVideo => ({
+        id: eachVideo.id,
+        publishedAt: eachVideo.published_at,
+        thumbnailUrl: eachVideo.thumbnail_url,
+        title: eachVideo.title,
+        viewCount: eachVideo.view_count,
+        channelName: eachVideo.channel.name,
+        profileImageUrl: eachVideo.channel.profile_image_url,
+      }))
+
+      this.setState({
+        trendingVideosList: updatedData,
+        apiStatus: apiStatusConstants.success,
+      })
+    } else {
+      this.setState({apiStatus: apiStatusConstants.failure})
+    }
+  }
+
+  renderLoadingView = () => (
+    <LoaderContainer data-testid="loader">
+      <Loader type="ThreeDots" color="blue" height="50" width="50" />
+    </LoaderContainer>
+  )
+
+  renderSuccessView = () => {
+    const {trendingVideosList} = this.state
+
+    return (
+      <TrendingVideosContainer>
+        {trendingVideosList.map(eachItem => (
+          <RenderTrendingVideos key={eachItem.id} details={eachItem} />
+        ))}
+      </TrendingVideosContainer>
+    )
+  }
+
+  renderTrendingVideos = () => {
+    const {apiStatus} = this.state
+    switch (apiStatus) {
+      case apiStatusConstants.inProgress:
+        return this.renderLoadingView()
+      case apiStatusConstants.success:
+        return this.renderSuccessView()
+
+      default:
+        return null
+    }
+  }
+
+  render() {
+    return <>{this.renderTrendingVideos()}</>
+  }
+}
 
 const Trending = () => (
   <ThemeContext>
     {value => {
       const {lightTheme} = value
       return (
-        <>
+        <TrendingPageContainer data-testid="trending" lightTheme={lightTheme}>
           <Header />
           <TrendingContainer>
             <LeftBannerVideosContainer lightTheme={lightTheme}>
@@ -33,9 +139,10 @@ const Trending = () => (
                 </IconTrendingButton>
                 <PageName lightTheme={lightTheme}>Trending</PageName>
               </PageIconContainer>
+              <TrendingVideos />
             </IconAndVideosDisplayContainer>
           </TrendingContainer>
-        </>
+        </TrendingPageContainer>
       )
     }}
   </ThemeContext>

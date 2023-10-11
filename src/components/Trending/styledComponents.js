@@ -1,12 +1,13 @@
 import styled from 'styled-components'
 
+export const TrendingPageContainer = styled.div`
+  background-color: ${props => (props.lightTheme ? '#f9f9f9 ' : '#0f0f0f')};
+`
 export const LeftBannerVideosContainer = styled.div`
   display: flex;
   background-color: ${props => (props.lightTheme ? '#ffffff' : '#181818')};
 `
-export const TrendingContainer = styled.div`
-  display: flex;
-`
+
 export const LeftBannerIcons = styled.div`
   display: flex;
   flex-direction: column;
@@ -53,4 +54,24 @@ export const IconTrendingButton = styled.button`
     width: 60px;
     border-radius: 30px;
   }
+`
+export const TrendingVideosContainer = styled.ul`
+  list-style-type: none;
+`
+export const LoaderContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`
+export const TrendingListItem = styled.li`
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+`
+export const TrendingImage = styled.img`
+  height: 200px;
+  width: 200px;
+`
+export const TrendingContainer = styled.div`
+  display: flex;
+  min-height: 1100px;
 `
