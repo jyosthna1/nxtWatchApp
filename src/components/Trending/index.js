@@ -1,6 +1,7 @@
 import {Component} from 'react'
 import {HiFire} from 'react-icons/hi'
 import Cookies from 'js-cookie'
+import {Link} from 'react-router-dom'
 import {formatDistanceToNow} from 'date-fns'
 import Loader from 'react-loader-spinner'
 import Header from '../Header'
@@ -25,6 +26,11 @@ import {
   Tittle,
   ChannelName,
   ChannelNameSmallSize,
+  FailureContainer,
+  FailureImage,
+  FailureHead,
+  FailureInfo,
+  RetryButton,
 } from './styledComponents'
 
 const apiStatusConstants = {
@@ -33,6 +39,33 @@ const apiStatusConstants = {
   failure: 'FAILURE',
   inProgress: 'IN_PROGRESS',
 }
+
+const FailureView = () => (
+  <ThemeContext.Consumer>
+    {value => {
+      const {lightTheme} = value
+
+      const image = lightTheme
+        ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png'
+        : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png'
+      return (
+        <FailureContainer>
+          <FailureImage src={image} alt="failure view" />
+          <FailureHead lightTheme={lightTheme}>
+            Oops! Something went wrong
+          </FailureHead>
+          <FailureInfo lightTheme={lightTheme}>
+            We are having some trouble to complete some request. <br /> Please
+            try again.
+          </FailureInfo>
+          <Link to="/">
+            <RetryButton type="button">Retry</RetryButton>
+          </Link>
+        </FailureContainer>
+      )
+    }}
+  </ThemeContext.Consumer>
+)
 
 const RenderTrendingVideos = props => (
   <ThemeContext.Consumer>
@@ -135,6 +168,8 @@ class TrendingVideos extends Component {
         return this.renderLoadingView()
       case apiStatusConstants.success:
         return this.renderSuccessView()
+      case apiStatusConstants.failure:
+        return <FailureView />
 
       default:
         return null

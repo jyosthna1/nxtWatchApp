@@ -6,6 +6,7 @@ import Home from './components/Home'
 import ThemeContext from './context/ThemeContext'
 import Trending from './components/Trending'
 import ProtectedRoute from './components/ProtectedRoute'
+import Gaming from './components/Gaming'
 
 // Replace your code here
 
@@ -29,6 +30,7 @@ class App extends Component {
           <Route exact path="/login" component={Login} />
           <ProtectedRoute exact path="/" component={Home} />
           <ProtectedRoute exact path="/trending" component={Trending} />
+          <ProtectedRoute exact path="/gaming" component={Gaming} />
         </Switch>
       </ThemeContext.Provider>
     )
