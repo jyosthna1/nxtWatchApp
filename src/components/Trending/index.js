@@ -58,7 +58,7 @@ const FailureView = () => (
             We are having some trouble to complete some request. <br /> Please
             try again.
           </FailureInfo>
-          <Link to="/">
+          <Link to="/trending">
             <RetryButton type="button">Retry</RetryButton>
           </Link>
         </FailureContainer>
