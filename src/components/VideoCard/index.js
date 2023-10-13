@@ -1,4 +1,5 @@
 import {formatDistanceToNow} from 'date-fns'
+import {Link} from 'react'
 import {
   ListItem,
   VideoImage,
@@ -28,19 +29,21 @@ const VideoCard = props => (
       const time = formatDistanceToNow(new Date(publishedAt))
       return (
         <ListItem>
-          <VideoImage src={thumbnailUrl} alt="video thumbnail" />
-          <ChannelLogoAndDetailsContainer>
-            <ProfileImage src={profileImageUrl} alt="channel logo" />
-            <InformationContainer>
-              <Tittle lightTheme={lightTheme}>{title}</Tittle>
-              <ChannelName>
-                {channelName} <br /> {viewCount} views . {time} ago
-              </ChannelName>
-              <ChannelNameSmallSize>
-                {channelName} . {viewCount} views . {time} ago
-              </ChannelNameSmallSize>
-            </InformationContainer>
-          </ChannelLogoAndDetailsContainer>
+          <Link to="/videos/:id">
+            <VideoImage src={thumbnailUrl} alt="video thumbnail" />
+            <ChannelLogoAndDetailsContainer>
+              <ProfileImage src={profileImageUrl} alt="channel logo" />
+              <InformationContainer>
+                <Tittle lightTheme={lightTheme}>{title}</Tittle>
+                <ChannelName>
+                  {channelName} <br /> {viewCount} views . {time} ago
+                </ChannelName>
+                <ChannelNameSmallSize>
+                  {channelName} . {viewCount} views . {time} ago
+                </ChannelNameSmallSize>
+              </InformationContainer>
+            </ChannelLogoAndDetailsContainer>
+          </Link>
         </ListItem>
       )
     }}

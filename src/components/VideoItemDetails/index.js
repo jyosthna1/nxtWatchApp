@@ -21,7 +21,8 @@ class VideoItemDetails extends Component {
       method: 'GET',
     }
     const response = await fetch(url, options)
-    const data = response.json()
+    const data = await response.json()
+    console.log(data)
   }
 
   render() {
