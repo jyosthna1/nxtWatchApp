@@ -9,7 +9,6 @@ export const LeftBannerIcons = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 20px;
-  width: 10vw;
 
   @media screen and (min-width: 768px) {
     display: flex;

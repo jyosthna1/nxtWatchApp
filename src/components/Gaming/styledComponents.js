@@ -3,12 +3,10 @@ import styled from 'styled-components'
 export const GamingPageContainer = styled.div`
   background-color: ${props => (props.lightTheme ? '#f9f9f9' : '#0f0f0f')};
   min-height: 700px;
-  max-height: 1200px;
 `
 export const SideBarAndGamingContainer = styled.div`
   display: flex;
   min-height: 700px;
-  max-height: 1200px;
 `
 export const LeftBannerVideosContainer = styled.div`
   display: flex;
@@ -100,4 +98,42 @@ export const RetryButton = styled.button`
   border-width: 0px;
   border-radius: 4px;
   cursor: pointer;
+`
+export const GameUnOrderList = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 100%;
+  list-style-type: none;
+  padding: 0px;
+`
+export const GameListItem = styled.li`
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  margin: 20px;
+  @media screen and (min-width: 768px) {
+    width: 24%;
+  }
+`
+export const GameImage = styled.img`
+  width: 100%;
+  margin-bottom: 10px;
+  height: 200px;
+  border-radius: 10px;
+  @media screen and (min-width: 768px) {
+    height: 300px;
+  }
+`
+export const GameName = styled.h1`
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: bold;
+  color: ${props => (props.lightTheme ? '#000000' : '#ffffff')};
+`
+export const ViewsCount = styled.p`
+  font-family: 'Roboto';
+  font-size: 14px;
+  color: #7e858e;
+  margin: 0px;
 `

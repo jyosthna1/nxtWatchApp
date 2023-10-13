@@ -21,6 +21,11 @@ import {
   FailureImage,
   FailureInfo,
   RetryButton,
+  GameUnOrderList,
+  GameListItem,
+  GameImage,
+  GameName,
+  ViewsCount,
 } from './styledComponents'
 
 const apiStatusConstants = {
@@ -52,6 +57,23 @@ const FailureView = () => (
             <RetryButton type="button">Retry</RetryButton>
           </Link>
         </FailureContainer>
+      )
+    }}
+  </ThemeContext.Consumer>
+)
+
+const RenderGameItem = props => (
+  <ThemeContext.Consumer>
+    {value => {
+      const {lightTheme} = value
+      const {details} = props
+      const {thumbnailUrl, title, viewCount} = details
+      return (
+        <GameListItem>
+          <GameImage src={thumbnailUrl} alt="video thumbnail" />
+          <GameName lightTheme={lightTheme}>{title}</GameName>
+          <ViewsCount>{viewCount} Watching Worldwide</ViewsCount>
+        </GameListItem>
       )
     }}
   </ThemeContext.Consumer>
@@ -98,6 +120,20 @@ class GameVideosComponent extends Component {
     </LoaderContainer>
   )
 
+  renderSuccess = () => {
+    const {gameList} = this.state
+    return (
+      <GameUnOrderList>
+        {gameList.map(eachGameDataItem => (
+          <RenderGameItem
+            key={eachGameDataItem.id}
+            details={eachGameDataItem}
+          />
+        ))}
+      </GameUnOrderList>
+    )
+  }
+
   renderGame = () => {
     const {apiStatus} = this.state
     switch (apiStatus) {
@@ -105,6 +141,8 @@ class GameVideosComponent extends Component {
         return this.LoadingView()
       case apiStatusConstants.failure:
         return <FailureView />
+      case apiStatusConstants.success:
+        return this.renderSuccess()
 
       default:
         return null

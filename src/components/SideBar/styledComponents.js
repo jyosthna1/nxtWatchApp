@@ -6,7 +6,7 @@ export const HomeIconContainer = styled.button`
   border-width: 0px;
   outline: none;
   cursor: pointer;
-  width: 10vw;
+  width: 16vw;
   padding-left: 10px;
   padding-right: 20px;
   background-color: transparent;
