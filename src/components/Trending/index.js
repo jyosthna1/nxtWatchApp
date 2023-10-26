@@ -182,7 +182,7 @@ class TrendingVideos extends Component {
 }
 
 const Trending = () => (
-  <ThemeContext>
+  <ThemeContext.Consumer>
     {value => {
       const {lightTheme} = value
       return (
@@ -207,7 +207,7 @@ const Trending = () => (
         </TrendingPageContainer>
       )
     }}
-  </ThemeContext>
+  </ThemeContext.Consumer>
 )
 
 export default Trending

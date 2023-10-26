@@ -1,5 +1,6 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
+import ThemeContext from '../../context/ThemeContext'
 
 const apiStatusConstants = {
   initial: 'INITIAL',
@@ -8,7 +9,7 @@ const apiStatusConstants = {
   inProgress: 'IN_PROGRESS',
 }
 
-class VideoItemDetails extends Component {
+class VideoItemDetailsData extends Component {
   state = {videoData: [], apiStatus: apiStatusConstants.initial}
 
   componentDidMount() {
@@ -58,5 +59,14 @@ class VideoItemDetails extends Component {
     return <h1>Hi</h1>
   }
 }
+
+const VideoItemDetails = () => (
+  <ThemeContext.Consumer>
+    {value => {
+      const {lightTheme} = value
+      return <></>
+    }}
+  </ThemeContext.Consumer>
+)
 
 export default VideoItemDetails
