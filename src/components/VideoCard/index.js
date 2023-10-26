@@ -25,8 +25,8 @@ const VideoCard = props => (
         title,
         viewCount,
         channelName,
-        id,
         profileImageUrl,
+        id,
       } = details
       const time = formatDistanceToNow(new Date(publishedAt))
       return (

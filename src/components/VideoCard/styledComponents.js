@@ -4,7 +4,6 @@ export const ListItem = styled.li`
   margin-bottom: 50px;
   width: 300px;
   margin-right: 20px;
-
   @media screen and (max-width: 767px) {
     width: 90vw;
   }
@@ -32,7 +31,6 @@ export const Tittle = styled.p`
   font-size: 13px;
   line-height: 20px;
   margin-top: 0px;
-  text-decoration: none;
   color: ${props => (props.lightTheme ? '#313131' : '#f4f4f4')};
 `
 export const ChannelName = styled.p`
@@ -40,7 +38,6 @@ export const ChannelName = styled.p`
   font-size: 13px;
   line-height: 26px;
   margin-top: 0px;
-  text-decoration: none;
   color: ${props => (props.lightTheme ? '#313131' : '#606060')};
   @media screen and (max-width: 767px) {
     display: none;
