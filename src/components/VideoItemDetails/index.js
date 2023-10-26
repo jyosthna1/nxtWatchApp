@@ -1,6 +1,16 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
+import Loader from 'react-loader-spinner'
 import ThemeContext from '../../context/ThemeContext'
+import Header from '../Header'
+import SideBar from '../SideBar'
+import FailureView from '../FailureView'
+import {
+  LoaderContainer,
+  SideBarAndGamingContainer,
+  LeftBannerVideosContainer,
+  LeftBannerIcons,
+} from './styledComponents'
 
 const apiStatusConstants = {
   initial: 'INITIAL',
@@ -55,8 +65,31 @@ class VideoItemDetailsData extends Component {
     }
   }
 
+  renderLoadingView = () => (
+    <LoaderContainer data-testid="loader">
+      <Loader type="ThreeDots" color="blue" height="50" width="50" />
+    </LoaderContainer>
+  )
+
+  renderFailureView = () => <FailureView />
+
+  renderVideoDetailsSwitch = () => {
+    const {apiStatus} = this.state
+    switch (apiStatus) {
+      case apiStatusConstants.inProgress:
+        return this.renderLoadingView()
+      case apiStatusConstants.failure:
+        return this.renderFailureView()
+      case apiStatusConstants.success:
+        return this.renderSuccessView()
+      default:
+        return null
+    }
+  }
+
   render() {
-    return <h1>Hi</h1>
+    const {lightTheme} = this.props
+    return <>{this.renderVideoDetailsSwitch()}</>
   }
 }
 
@@ -64,7 +97,19 @@ const VideoItemDetails = () => (
   <ThemeContext.Consumer>
     {value => {
       const {lightTheme} = value
-      return <></>
+      return (
+        <>
+          <Header />
+          <SideBarAndGamingContainer>
+            <LeftBannerVideosContainer lightTheme={lightTheme}>
+              <LeftBannerIcons>
+                <SideBar />
+              </LeftBannerIcons>
+            </LeftBannerVideosContainer>
+            <VideoItemDetailsData />
+          </SideBarAndGamingContainer>
+        </>
+      )
     }}
   </ThemeContext.Consumer>
 )
