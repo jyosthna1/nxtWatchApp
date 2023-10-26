@@ -1,5 +1,6 @@
 import {formatDistanceToNow} from 'date-fns'
-import {Link} from 'react'
+import {Link} from 'react-router-dom'
+import './index.css'
 import {
   ListItem,
   VideoImage,
@@ -24,12 +25,13 @@ const VideoCard = props => (
         title,
         viewCount,
         channelName,
+        id,
         profileImageUrl,
       } = details
       const time = formatDistanceToNow(new Date(publishedAt))
       return (
         <ListItem>
-          <Link to="/videos/:id">
+          <Link to={`/videos/${id}`} className="link">
             <VideoImage src={thumbnailUrl} alt="video thumbnail" />
             <ChannelLogoAndDetailsContainer>
               <ProfileImage src={profileImageUrl} alt="channel logo" />
