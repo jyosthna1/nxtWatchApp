@@ -24,3 +24,16 @@ export const LeftBannerIcons = styled.div`
     display: none;
   }
 `
+export const VideoDetailsView = styled.div`
+  flex-grow: 1;
+  background-color: ${props => (props.lightTheme ? '#f1f1f1' : '#181818')};
+  padding: 20px;
+`
+export const VideoContainer = styled.div`
+  width: 90%;
+`
+export const VideoDetailPage = styled.div``
+export const Title = styled.h1`
+  font-family: 'Roboto';
+  font-size: 15px;
+`

@@ -1,5 +1,6 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
+import ReactPlayer from 'react-player'
 import Loader from 'react-loader-spinner'
 import ThemeContext from '../../context/ThemeContext'
 import Header from '../Header'
@@ -10,6 +11,10 @@ import {
   SideBarAndGamingContainer,
   LeftBannerVideosContainer,
   LeftBannerIcons,
+  VideoDetailsView,
+  VideoDetailPage,
+  Title,
+  VideoContainer,
 } from './styledComponents'
 
 const apiStatusConstants = {
@@ -19,7 +24,42 @@ const apiStatusConstants = {
   inProgress: 'IN_PROGRESS',
 }
 
-class VideoItemDetailsData extends Component {
+const VideoItemDetailsHeader = () => (
+  <ThemeContext.Consumer>
+    {value => {
+      const {lightTheme} = value
+      return (
+        <>
+          <LeftBannerVideosContainer lightTheme={lightTheme}>
+            <LeftBannerIcons>
+              <SideBar />
+            </LeftBannerIcons>
+          </LeftBannerVideosContainer>
+        </>
+      )
+    }}
+  </ThemeContext.Consumer>
+)
+
+const VideoDetailsSuccessDisplay = props => (
+  <ThemeContext.Consumer>
+    {value => {
+      const {lightTheme} = value
+      const {videoData} = props
+      const {videoUrl, description, title} = videoData
+      return (
+        <VideoDetailsView lightTheme={lightTheme}>
+          <VideoContainer>
+            <ReactPlayer url={videoUrl} controls/>
+          </VideoContainer>
+          <Title>{title}</Title>
+        </VideoDetailsView>
+      )
+    }}
+  </ThemeContext.Consumer>
+)
+
+class VideoItemDetails extends Component {
   state = {videoData: [], apiStatus: apiStatusConstants.initial}
 
   componentDidMount() {
@@ -53,7 +93,8 @@ class VideoItemDetailsData extends Component {
       method: 'GET',
     }
     const response = await fetch(url, options)
-    if (response.ok === true) {
+
+    if (response.ok) {
       const data = await response.json()
       const updatedData = this.getFormattedData(data)
       this.setState({
@@ -70,6 +111,11 @@ class VideoItemDetailsData extends Component {
       <Loader type="ThreeDots" color="blue" height="50" width="50" />
     </LoaderContainer>
   )
+
+  renderSuccessView = () => {
+    const {videoData} = this.state
+    return <VideoDetailsSuccessDisplay videoData={videoData} />
+  }
 
   renderFailureView = () => <FailureView />
 
@@ -88,30 +134,16 @@ class VideoItemDetailsData extends Component {
   }
 
   render() {
-    const {lightTheme} = this.props
-    return <>{this.renderVideoDetailsSwitch()}</>
+    return (
+      <VideoDetailPage>
+        <Header />
+        <SideBarAndGamingContainer>
+          <VideoItemDetailsHeader />
+          {this.renderVideoDetailsSwitch()}
+        </SideBarAndGamingContainer>
+      </VideoDetailPage>
+    )
   }
 }
-
-const VideoItemDetails = () => (
-  <ThemeContext.Consumer>
-    {value => {
-      const {lightTheme} = value
-      return (
-        <>
-          <Header />
-          <SideBarAndGamingContainer>
-            <LeftBannerVideosContainer lightTheme={lightTheme}>
-              <LeftBannerIcons>
-                <SideBar />
-              </LeftBannerIcons>
-            </LeftBannerVideosContainer>
-            <VideoItemDetailsData />
-          </SideBarAndGamingContainer>
-        </>
-      )
-    }}
-  </ThemeContext.Consumer>
-)
 
 export default VideoItemDetails
