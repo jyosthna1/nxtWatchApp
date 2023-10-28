@@ -1,5 +1,8 @@
 import {Component} from 'react'
+import {formatDistanceToNow} from 'date-fns'
 import Cookies from 'js-cookie'
+import {BiLike, BiDislike} from 'react-icons/bi'
+import {MdPlaylistAdd} from 'react-icons/md'
 import ReactPlayer from 'react-player'
 import Loader from 'react-loader-spinner'
 import ThemeContext from '../../context/ThemeContext'
@@ -15,6 +18,12 @@ import {
   VideoDetailPage,
   Title,
   VideoContainer,
+  ViewsAndTimeContainer,
+  ViewTimeDisplay,
+  ButtonContainer,
+  LikeButtonContainer,
+  ButtonName,
+  LikeButton,
 } from './styledComponents'
 
 const apiStatusConstants = {
@@ -46,13 +55,36 @@ const VideoDetailsSuccessDisplay = props => (
     {value => {
       const {lightTheme} = value
       const {videoData} = props
-      const {videoUrl, description, title} = videoData
+      const {videoUrl, description, title, viewCount, publishedAt} = videoData
+      const time = formatDistanceToNow(new Date(publishedAt))
       return (
         <VideoDetailsView lightTheme={lightTheme}>
           <VideoContainer>
-            <ReactPlayer url={videoUrl} controls/>
+            <ReactPlayer url={videoUrl} controls />
           </VideoContainer>
-          <Title>{title}</Title>
+          <Title lightTheme={lightTheme}>{title}</Title>
+          <ViewsAndTimeContainer>
+            <ViewTimeDisplay lightTheme={lightTheme}>
+              {viewCount} views . {time} ago
+            </ViewTimeDisplay>
+          </ViewsAndTimeContainer>
+          <ButtonContainer>
+            <LikeButtonContainer>
+              <LikeButton type="button">
+                <BiLike size="17px" /> Like
+              </LikeButton>
+            </LikeButtonContainer>
+            <LikeButtonContainer>
+              <LikeButton type="button">
+                <BiDislike size="17px" /> Dislike
+              </LikeButton>
+            </LikeButtonContainer>
+            <LikeButtonContainer>
+              <LikeButton type="button">
+                <MdPlaylistAdd size="17px" /> Save
+              </LikeButton>
+            </LikeButtonContainer>
+          </ButtonContainer>
         </VideoDetailsView>
       )
     }}

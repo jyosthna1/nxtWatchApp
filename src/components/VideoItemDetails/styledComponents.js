@@ -36,4 +36,36 @@ export const VideoDetailPage = styled.div``
 export const Title = styled.h1`
   font-family: 'Roboto';
   font-size: 15px;
+  font-size: 400;
+  color: ${props => (props.lightTheme ? '#606060' : '#ffffff')};
+`
+export const ViewsAndTimeContainer = styled.div`
+  display: flex;
+`
+export const ViewTimeDisplay = styled.p`
+  font-family: 'Roboto';
+  font-size: 13px;
+  color: #7e858e;
+  margin: 0px;
+`
+export const ButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+  padding: 0px;
+`
+export const LikeButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 10px;
+`
+export const LikeButton = styled.button`
+  outline: none;
+  border-width: 0px;
+  cursor: pointer;
+  font-family: 'Roboto';
+  font-size: 15px;
+  color: #7e858e;
+  background-color: transparent;
 `

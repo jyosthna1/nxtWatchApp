@@ -64,7 +64,7 @@ export const ProfileImage = styled.img`
   width: 22px;
 `
 export const NavBarContainerDark = styled.div`
-  background-color: #181818;
+  background-color: #1e293b;
   padding: 14px;
   display: flex;
   justify-content: space-between;
