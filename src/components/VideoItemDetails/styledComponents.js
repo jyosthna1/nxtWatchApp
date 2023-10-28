@@ -69,3 +69,54 @@ export const LikeButton = styled.button`
   color: #7e858e;
   background-color: transparent;
 `
+export const ViewAndButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+`
+export const LogoAndChannelNameContainer = styled.div`
+  display: flex;
+  align-items: center;
+`
+export const ProfileImage = styled.img`
+  height: 40px;
+  width: 40px;
+`
+export const ChannelNameAndSubscriber = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+`
+export const ChannelName = styled.p`
+  font-family: 'Roboto';
+  font-size: 12px;
+  margin: 0px;
+  font-weight: 500;
+  color: ${props => (props.lightTheme ? '#212121' : '#ffffff')};
+  @media screen and (min-width: 768px) {
+    font-size: 15px;
+  }
+`
+export const Subscriber = styled.p`
+  font-family: 'Roboto';
+  font-size: 12px;
+  margin: 0px;
+  padding-top: 7px;
+  color: #7e858e;
+  @media screen and (min-width: 768px) {
+    font-size: 13px;
+  }
+`
+export const Description = styled.p`
+  font-family: 'Roboto';
+  font-size: 12px;
+  font-weight: 300;
+  color: ${props => (props.lightTheme ? '#212121' : '#ffffff')};
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+  }
+`
