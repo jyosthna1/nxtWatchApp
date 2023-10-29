@@ -1,35 +1,17 @@
 import {Component} from 'react'
-import {formatDistanceToNow} from 'date-fns'
 import Cookies from 'js-cookie'
-import {BiLike, BiDislike} from 'react-icons/bi'
-import {MdPlaylistAdd} from 'react-icons/md'
-import ReactPlayer from 'react-player'
 import Loader from 'react-loader-spinner'
 import ThemeContext from '../../context/ThemeContext'
 import Header from '../Header'
 import SideBar from '../SideBar'
 import FailureView from '../FailureView'
+import VideoDetailsSuccessDisplay from '../VideoItemDetailsSuccessDisplay'
 import {
   LoaderContainer,
   SideBarAndGamingContainer,
   LeftBannerVideosContainer,
   LeftBannerIcons,
-  VideoDetailsView,
   VideoDetailPage,
-  Title,
-  VideoContainer,
-  ViewsAndTimeContainer,
-  ViewTimeDisplay,
-  ButtonContainer,
-  LikeButtonContainer,
-  LikeButton,
-  ViewAndButtonContainer,
-  LogoAndChannelNameContainer,
-  ProfileImage,
-  ChannelNameAndSubscriber,
-  ChannelName,
-  Subscriber,
-  Description,
 } from './styledComponents'
 
 const apiStatusConstants = {
@@ -51,68 +33,6 @@ const VideoItemDetailsHeader = () => (
             </LeftBannerIcons>
           </LeftBannerVideosContainer>
         </>
-      )
-    }}
-  </ThemeContext.Consumer>
-)
-
-const VideoDetailsSuccessDisplay = props => (
-  <ThemeContext.Consumer>
-    {value => {
-      const {lightTheme} = value
-      const {videoData} = props
-      const {
-        videoUrl,
-        description,
-        title,
-        viewCount,
-        publishedAt,
-        thumbnailUrl,
-        channelName,
-        subscriberCount,
-        profileImageUrl,
-      } = videoData
-      const time = formatDistanceToNow(new Date(publishedAt))
-      return (
-        <VideoDetailsView lightTheme={lightTheme}>
-          <VideoContainer>
-            <ReactPlayer url={videoUrl} controls />
-          </VideoContainer>
-          <Title lightTheme={lightTheme}>{title}</Title>
-          <ViewAndButtonContainer>
-            <ViewsAndTimeContainer>
-              <ViewTimeDisplay lightTheme={lightTheme}>
-                {viewCount} views . {time} ago
-              </ViewTimeDisplay>
-            </ViewsAndTimeContainer>
-            <ButtonContainer>
-              <LikeButtonContainer>
-                <LikeButton type="button">
-                  <BiLike size="17px" /> Like
-                </LikeButton>
-              </LikeButtonContainer>
-              <LikeButtonContainer>
-                <LikeButton type="button">
-                  <BiDislike size="17px" /> Dislike
-                </LikeButton>
-              </LikeButtonContainer>
-              <LikeButtonContainer>
-                <LikeButton type="button">
-                  <MdPlaylistAdd size="17px" /> Save
-                </LikeButton>
-              </LikeButtonContainer>
-            </ButtonContainer>
-          </ViewAndButtonContainer>
-          <hr />
-          <LogoAndChannelNameContainer>
-            <ProfileImage src={profileImageUrl} alt="channel logo" />
-            <ChannelNameAndSubscriber>
-              <ChannelName lightTheme={lightTheme}>{channelName}</ChannelName>
-              <Subscriber>{subscriberCount} subscribers</Subscriber>
-            </ChannelNameAndSubscriber>
-          </LogoAndChannelNameContainer>
-          <Description lightTheme={lightTheme}>{description}</Description>
-        </VideoDetailsView>
       )
     }}
   </ThemeContext.Consumer>

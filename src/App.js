@@ -12,19 +12,28 @@ import VideoItemDetails from './components/VideoItemDetails'
 // Replace your code here
 
 class App extends Component {
-  state = {lightTheme: true}
+  state = {lightTheme: true, savedList: []}
 
   changeTheme = () => {
     this.setState(prevState => ({lightTheme: !prevState.lightTheme}))
   }
 
+  addSaveListItem = videoData => {
+    this.setState(prevState => ({
+      savedList: [...prevState.savedList, videoData],
+    }))
+  }
+
   render() {
-    const {lightTheme} = this.state
+    const {lightTheme, savedList} = this.state
+
     return (
       <ThemeContext.Provider
         value={{
           lightTheme,
+          savedList,
           changeTheme: this.changeTheme,
+          addSaveListItem: this.addSaveListItem,
         }}
       >
         <Switch>
