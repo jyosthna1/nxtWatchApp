@@ -19,13 +19,21 @@ import {
   ChannelName,
   Subscriber,
   Description,
+  DisLikeButton,
+  SaveButton,
 } from './styledComponents'
 
 const VideoDetailsSuccessDisplay = props => (
   <ThemeContext.Consumer>
     {value => {
       const {lightTheme, addSaveListItem} = value
-      const {videoData} = props
+      const {
+        videoData,
+        likeButtonOn,
+        disLikeButtonOn,
+        onClickChangeLikeButton,
+        onClickChangeDisLikeButton,
+      } = props
       const {
         videoUrl,
         description,
@@ -44,6 +52,14 @@ const VideoDetailsSuccessDisplay = props => (
         addSaveListItem(videoData)
       }
 
+      const onClickLikeButtonOn = () => {
+        onClickChangeLikeButton()
+      }
+
+      const onClickDisLikeButtonOn = () => {
+        onClickChangeDisLikeButton()
+      }
+
       return (
         <VideoDetailsView lightTheme={lightTheme}>
           <VideoContainer>
@@ -58,19 +74,27 @@ const VideoDetailsSuccessDisplay = props => (
             </ViewsAndTimeContainer>
             <ButtonContainer>
               <LikeButtonContainer>
-                <LikeButton type="button">
+                <LikeButton
+                  type="button"
+                  likeButtonOn={likeButtonOn}
+                  onClick={onClickLikeButtonOn}
+                >
                   <BiLike size="17px" /> Like
                 </LikeButton>
               </LikeButtonContainer>
               <LikeButtonContainer>
-                <LikeButton type="button">
+                <DisLikeButton
+                  type="button"
+                  disLikeButtonOn={disLikeButtonOn}
+                  onClick={onClickDisLikeButtonOn}
+                >
                   <BiDislike size="17px" /> Dislike
-                </LikeButton>
+                </DisLikeButton>
               </LikeButtonContainer>
               <LikeButtonContainer>
-                <LikeButton type="button" onClick={onClickAddItem}>
+                <SaveButton type="button" onClick={onClickAddItem}>
                   <MdPlaylistAdd size="17px" /> Save
-                </LikeButton>
+                </SaveButton>
               </LikeButtonContainer>
             </ButtonContainer>
           </ViewAndButtonContainer>

@@ -39,7 +39,12 @@ const VideoItemDetailsHeader = () => (
 )
 
 class VideoItemDetails extends Component {
-  state = {videoData: [], apiStatus: apiStatusConstants.initial}
+  state = {
+    videoData: [],
+    apiStatus: apiStatusConstants.initial,
+    likeButtonOn: false,
+    disLikeButtonOn: false,
+  }
 
   componentDidMount() {
     this.getVideoItemDetails()
@@ -91,9 +96,27 @@ class VideoItemDetails extends Component {
     </LoaderContainer>
   )
 
+  onClickChangeLikeButton = () => {
+    this.setState(prevState => ({likeButtonOn: !prevState.likeButtonOn}))
+    this.setState({disLikeButtonOn: false})
+  }
+
+  onClickChangeDisLikeButton = () => {
+    this.setState(prevState => ({disLikeButtonOn: !prevState.disLikeButtonOn}))
+    this.setState({likeButtonOn: false})
+  }
+
   renderSuccessView = () => {
-    const {videoData} = this.state
-    return <VideoDetailsSuccessDisplay videoData={videoData} />
+    const {videoData, likeButtonOn, disLikeButtonOn} = this.state
+    return (
+      <VideoDetailsSuccessDisplay
+        videoData={videoData}
+        likeButtonOn={likeButtonOn}
+        disLikeButtonOn={disLikeButtonOn}
+        onClickChangeLikeButton={this.onClickChangeLikeButton}
+        onClickChangeDisLikeButton={this.onClickChangeDisLikeButton}
+      />
+    )
   }
 
   renderFailureView = () => <FailureView />

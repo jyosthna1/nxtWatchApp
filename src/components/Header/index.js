@@ -1,6 +1,7 @@
 import {FaMoon} from 'react-icons/fa'
 import {GiHamburgerMenu} from 'react-icons/gi'
 import {FiLogOut, FiSun} from 'react-icons/fi'
+
 import Cookies from 'js-cookie'
 import {Redirect} from 'react-router-dom'
 

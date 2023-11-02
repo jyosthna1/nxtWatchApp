@@ -36,14 +36,23 @@ export const LikeButtonContainer = styled.div`
   justify-content: center;
   padding-right: 10px;
 `
-export const LikeButton = styled.button`
+export const LikeAndDisLikeButton = styled.button`
   outline: none;
   border-width: 0px;
   cursor: pointer;
   font-family: 'Roboto';
   font-size: 15px;
-  color: #7e858e;
   background-color: transparent;
+`
+export const LikeButton = styled(LikeAndDisLikeButton)`
+  color: ${props => (props.likeButtonOn ? '#2563eb' : '#64748b')};
+`
+
+export const DisLikeButton = styled(LikeAndDisLikeButton)`
+  color: ${props => (props.disLikeButtonOn ? '#2563eb' : '#64748b')};
+`
+export const SaveButton = styled(LikeAndDisLikeButton)`
+  color: #7e858e;
 `
 export const ViewAndButtonContainer = styled.div`
   display: flex;

@@ -8,6 +8,7 @@ import Trending from './components/Trending'
 import ProtectedRoute from './components/ProtectedRoute'
 import Gaming from './components/Gaming'
 import VideoItemDetails from './components/VideoItemDetails'
+import SavedVideos from './components/SavedVideos'
 
 // Replace your code here
 
@@ -46,6 +47,7 @@ class App extends Component {
             path="/videos/:id"
             component={VideoItemDetails}
           />
+          <ProtectedRoute exact path="/saved-videos" component={SavedVideos} />
         </Switch>
       </ThemeContext.Provider>
     )
