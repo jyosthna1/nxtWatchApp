@@ -67,7 +67,7 @@ const FailureView = () => (
   </ThemeContext.Consumer>
 )
 
-const RenderTrendingVideos = props => (
+const RenderTrendingVideosItem = props => (
   <ThemeContext.Consumer>
     {value => {
       const {lightTheme} = value
@@ -155,7 +155,7 @@ class TrendingVideos extends Component {
     return (
       <TrendingVideosContainer>
         {trendingVideosList.map(eachItem => (
-          <RenderTrendingVideos key={eachItem.id} details={eachItem} />
+          <RenderTrendingVideosItem key={eachItem.id} details={eachItem} />
         ))}
       </TrendingVideosContainer>
     )
