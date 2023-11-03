@@ -3,6 +3,7 @@ import {Component} from 'react'
 import {Link} from 'react-router-dom'
 import Loader from 'react-loader-spinner'
 import Cookies from 'js-cookie'
+import './index.css'
 import ThemeContext from '../../context/ThemeContext'
 import Header from '../Header'
 import SideBar from '../SideBar'
@@ -67,12 +68,14 @@ const RenderGameItem = props => (
     {value => {
       const {lightTheme} = value
       const {details} = props
-      const {thumbnailUrl, title, viewCount} = details
+      const {thumbnailUrl, title, viewCount, id} = details
       return (
         <GameListItem>
-          <GameImage src={thumbnailUrl} alt="video thumbnail" />
-          <GameName lightTheme={lightTheme}>{title}</GameName>
-          <ViewsCount>{viewCount} Watching Worldwide</ViewsCount>
+          <Link to={`/videos/${id}`} className="link">
+            <GameImage src={thumbnailUrl} alt="video thumbnail" />
+            <GameName lightTheme={lightTheme}>{title}</GameName>
+            <ViewsCount>{viewCount} Watching Worldwide</ViewsCount>
+          </Link>
         </GameListItem>
       )
     }}

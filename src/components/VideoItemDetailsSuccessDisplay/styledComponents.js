@@ -52,7 +52,10 @@ export const DisLikeButton = styled(LikeAndDisLikeButton)`
   color: ${props => (props.disLikeButtonOn ? '#2563eb' : '#64748b')};
 `
 export const SaveButton = styled(LikeAndDisLikeButton)`
-  color: #7e858e;
+  color: #64748b;
+`
+export const UnSaveButton = styled(LikeAndDisLikeButton)`
+  color: #2563eb;
 `
 export const ViewAndButtonContainer = styled.div`
   display: flex;

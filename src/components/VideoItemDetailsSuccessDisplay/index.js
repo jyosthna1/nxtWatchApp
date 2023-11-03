@@ -21,12 +21,13 @@ import {
   Description,
   DisLikeButton,
   SaveButton,
+  UnSaveButton,
 } from './styledComponents'
 
 const VideoDetailsSuccessDisplay = props => (
   <ThemeContext.Consumer>
     {value => {
-      const {lightTheme, addSaveListItem} = value
+      const {lightTheme, addSaveListItem, saveButton, removeSaveItem} = value
       const {
         videoData,
         likeButtonOn,
@@ -50,6 +51,10 @@ const VideoDetailsSuccessDisplay = props => (
 
       const onClickAddItem = () => {
         addSaveListItem(videoData)
+      }
+
+      const onClickRemoveItem = () => {
+        removeSaveItem(id)
       }
 
       const onClickLikeButtonOn = () => {
@@ -91,11 +96,19 @@ const VideoDetailsSuccessDisplay = props => (
                   <BiDislike size="17px" /> Dislike
                 </DisLikeButton>
               </LikeButtonContainer>
-              <LikeButtonContainer>
-                <SaveButton type="button" onClick={onClickAddItem}>
-                  <MdPlaylistAdd size="17px" /> Save
-                </SaveButton>
-              </LikeButtonContainer>
+              {saveButton ? (
+                <LikeButtonContainer>
+                  <UnSaveButton type="button" onClick={onClickRemoveItem}>
+                    <MdPlaylistAdd size="17px" /> Saved
+                  </UnSaveButton>
+                </LikeButtonContainer>
+              ) : (
+                <LikeButtonContainer>
+                  <SaveButton type="button" onClick={onClickAddItem}>
+                    <MdPlaylistAdd size="17px" /> Save
+                  </SaveButton>
+                </LikeButtonContainer>
+              )}
             </ButtonContainer>
           </ViewAndButtonContainer>
           <hr />

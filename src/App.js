@@ -13,28 +13,38 @@ import SavedVideos from './components/SavedVideos'
 // Replace your code here
 
 class App extends Component {
-  state = {lightTheme: true, savedList: []}
+  state = {lightTheme: true, savedList: [], saveButton: false}
 
   changeTheme = () => {
     this.setState(prevState => ({lightTheme: !prevState.lightTheme}))
   }
 
   addSaveListItem = videoData => {
+    this.setState(prevState => ({saveButton: !prevState.saveButton}))
     this.setState(prevState => ({
       savedList: [...prevState.savedList, videoData],
     }))
   }
 
+  removeSaveItem = id => {
+    const {savedList} = this.state
+    this.setState(prevState => ({saveButton: !prevState.saveButton}))
+    const updatedList = savedList.filter(eachItem => eachItem.id !== id)
+    this.setState({savedList: updatedList})
+  }
+
   render() {
-    const {lightTheme, savedList} = this.state
+    const {lightTheme, savedList, saveButton} = this.state
 
     return (
       <ThemeContext.Provider
         value={{
           lightTheme,
           savedList,
+          saveButton,
           changeTheme: this.changeTheme,
           addSaveListItem: this.addSaveListItem,
+          removeSaveItem: this.removeSaveItem,
         }}
       >
         <Switch>
