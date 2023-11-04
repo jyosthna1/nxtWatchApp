@@ -1,5 +1,5 @@
 import './App.css'
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Route, Redirect} from 'react-router-dom'
 import {Component} from 'react'
 import Login from './components/Login'
 import Home from './components/Home'
@@ -9,11 +9,12 @@ import ProtectedRoute from './components/ProtectedRoute'
 import Gaming from './components/Gaming'
 import VideoItemDetails from './components/VideoItemDetails'
 import SavedVideos from './components/SavedVideos'
+import NotFound from './components/NotFound'
 
 // Replace your code here
 
 class App extends Component {
-  state = {lightTheme: true, savedList: [], saveButton: false}
+  state = {lightTheme: true, savedList: []}
 
   changeTheme = () => {
     this.setState(prevState => ({lightTheme: !prevState.lightTheme}))
@@ -34,14 +35,13 @@ class App extends Component {
   }
 
   render() {
-    const {lightTheme, savedList, saveButton} = this.state
+    const {lightTheme, savedList} = this.state
 
     return (
       <ThemeContext.Provider
         value={{
           lightTheme,
           savedList,
-          saveButton,
           changeTheme: this.changeTheme,
           addSaveListItem: this.addSaveListItem,
           removeSaveItem: this.removeSaveItem,
@@ -58,6 +58,8 @@ class App extends Component {
             component={VideoItemDetails}
           />
           <ProtectedRoute exact path="/saved-videos" component={SavedVideos} />
+          <Route path="/not-found" component={NotFound} />
+          <Redirect to="not-found" />
         </Switch>
       </ThemeContext.Provider>
     )

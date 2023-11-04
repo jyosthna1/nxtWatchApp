@@ -27,7 +27,13 @@ import {
 const VideoDetailsSuccessDisplay = props => (
   <ThemeContext.Consumer>
     {value => {
-      const {lightTheme, addSaveListItem, saveButton, removeSaveItem} = value
+      const {
+        lightTheme,
+        addSaveListItem,
+
+        removeSaveItem,
+        savedList,
+      } = value
       const {
         videoData,
         likeButtonOn,
@@ -48,6 +54,7 @@ const VideoDetailsSuccessDisplay = props => (
         id,
       } = videoData
       const time = formatDistanceToNow(new Date(publishedAt))
+      const activeVideo = savedList.filter(eachItem => eachItem.id === id)
 
       const onClickAddItem = () => {
         addSaveListItem(videoData)
@@ -96,7 +103,7 @@ const VideoDetailsSuccessDisplay = props => (
                   <BiDislike size="17px" /> Dislike
                 </DisLikeButton>
               </LikeButtonContainer>
-              {saveButton ? (
+              {activeVideo.length === 1 ? (
                 <LikeButtonContainer>
                   <UnSaveButton type="button" onClick={onClickRemoveItem}>
                     <MdPlaylistAdd size="17px" /> Saved

@@ -4,6 +4,7 @@ import Cookies from 'js-cookie'
 import {Link} from 'react-router-dom'
 import {formatDistanceToNow} from 'date-fns'
 import Loader from 'react-loader-spinner'
+import './index.css'
 import Header from '../Header'
 import ThemeContext from '../../context/ThemeContext'
 import SideBar from '../SideBar'
@@ -79,25 +80,28 @@ const RenderTrendingVideosItem = props => (
         viewCount,
         channelName,
         profileImageUrl,
+        id,
       } = details
       const time = formatDistanceToNow(new Date(publishedAt))
 
       return (
-        <TrendingListItem>
-          <TrendingImage src={thumbnailUrl} alt="video thumbnail" />
-          <ChannelLogoAndDetailsContainer>
-            <ProfileImage src={profileImageUrl} alt="channel logo" />
-            <InformationContainer>
-              <Tittle lightTheme={lightTheme}>{title}</Tittle>
-              <ChannelName>
-                {channelName} <br /> {viewCount} views . {time} ago
-              </ChannelName>
-              <ChannelNameSmallSize>
-                {channelName} . {viewCount} views . {time} ago
-              </ChannelNameSmallSize>
-            </InformationContainer>
-          </ChannelLogoAndDetailsContainer>
-        </TrendingListItem>
+        <Link to={`/videos/${id}`} className="list">
+          <TrendingListItem>
+            <TrendingImage src={thumbnailUrl} alt="video thumbnail" />
+            <ChannelLogoAndDetailsContainer>
+              <ProfileImage src={profileImageUrl} alt="channel logo" />
+              <InformationContainer>
+                <Tittle lightTheme={lightTheme}>{title}</Tittle>
+                <ChannelName>
+                  {channelName} <br /> {viewCount} views . {time} ago
+                </ChannelName>
+                <ChannelNameSmallSize>
+                  {channelName} . {viewCount} views . {time} ago
+                </ChannelNameSmallSize>
+              </InformationContainer>
+            </ChannelLogoAndDetailsContainer>
+          </TrendingListItem>
+        </Link>
       )
     }}
   </ThemeContext.Consumer>
