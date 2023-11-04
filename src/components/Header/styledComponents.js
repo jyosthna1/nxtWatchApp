@@ -6,6 +6,7 @@ export const NavBarContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 10vh;
 `
 
 export const WebsiteLogo = styled.img`
@@ -67,6 +68,7 @@ export const NavBarContainerDark = styled.div`
   background-color: #231f20;
   padding: 14px;
   display: flex;
+  height: 10vh;
   justify-content: space-between;
   align-items: center;
 `

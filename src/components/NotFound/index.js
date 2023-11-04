@@ -8,6 +8,8 @@ import {
   TrendingContainer,
   NotFoundImage,
   NotFoundDetailsContainer,
+  NotFoundMessage,
+  NotFoundDescription,
 } from './styledComponents'
 
 const NotFound = () => (
@@ -28,6 +30,12 @@ const NotFound = () => (
             </LeftBannerVideosContainer>
             <NotFoundDetailsContainer>
               <NotFoundImage src={image} alt="not found" />
+              <NotFoundMessage lightTheme={lightTheme}>
+                Page Not Found
+              </NotFoundMessage>
+              <NotFoundDescription>
+                We are sorry, the page you requested could not be found.
+              </NotFoundDescription>
             </NotFoundDetailsContainer>
           </TrendingContainer>
         </NotFoundContainer>
