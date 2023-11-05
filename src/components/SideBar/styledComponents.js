@@ -24,3 +24,38 @@ export const PageName = styled.p`
   font-size: 12px;
   color: ${props => (props.lightTheme ? '#000000' : '#ffffff')};
 `
+export const SideBarContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 600px;
+  width: 200px;
+`
+export const LinkItems = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+export const SideBarLastMenu = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+`
+export const ContactUs = styled.h1`
+  font-family: 'Roboto';
+  font-size: 17px;
+  color: ${props => (props.lightTheme ? '#000000' : '#ffffff')};
+`
+export const SocialMediaContainer = styled.div`
+  display: flex;
+`
+export const SocialMediaImage = styled.img`
+  height: 30px;
+  width: 30px;
+  margin-right: 10px;
+`
+export const LogoDescription = styled.p`
+  font-family: 'Roboto';
+  font-size: 13px;
+  font-weight: 500;
+  color: ${props => (props.lightTheme ? '#000000' : '#ffffff')};
+`

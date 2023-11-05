@@ -2,11 +2,9 @@ import styled from 'styled-components'
 
 export const GamingPageContainer = styled.div`
   background-color: ${props => (props.lightTheme ? '#f9f9f9' : '#0f0f0f')};
-  min-height: 700px;
 `
 export const SideBarAndGamingContainer = styled.div`
   display: flex;
-  min-height: 700px;
 `
 export const LeftBannerVideosContainer = styled.div`
   display: flex;
