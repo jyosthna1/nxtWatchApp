@@ -103,23 +103,13 @@ class LoginDetails extends Component {
               </UserNameContainer>
               <UserNameContainer>
                 <LabelLight htmlFor="password">PASSWORD</LabelLight>
-                {showPassword ? (
-                  <InputLight
-                    type="text"
-                    id="userName"
-                    placeholder="password"
-                    value={password}
-                    onChange={this.onChangePassword}
-                  />
-                ) : (
-                  <InputLight
-                    type="password"
-                    id="userName"
-                    placeholder="password"
-                    value={password}
-                    onChange={this.onChangePassword}
-                  />
-                )}
+                <InputLight
+                  type={showPassword ? 'text' : 'password'}
+                  id="userName"
+                  placeholder="password"
+                  value={password}
+                  onChange={this.onChangePassword}
+                />
               </UserNameContainer>
               <PasswordContainer>
                 <InputCheckbox

@@ -40,7 +40,7 @@ export const SideBarLastMenu = styled.div`
   flex-direction: column;
   padding-left: 20px;
 `
-export const ContactUs = styled.h1`
+export const ContactUs = styled.p`
   font-family: 'Roboto';
   font-size: 17px;
   color: ${props => (props.lightTheme ? '#000000' : '#ffffff')};

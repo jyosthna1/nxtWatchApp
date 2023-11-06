@@ -3,7 +3,7 @@ import {GiHamburgerMenu} from 'react-icons/gi'
 import {FiLogOut, FiSun} from 'react-icons/fi'
 
 import Cookies from 'js-cookie'
-import {Redirect} from 'react-router-dom'
+import {Redirect, Link} from 'react-router-dom'
 
 import ThemeContext from '../../context/ThemeContext'
 import {
@@ -38,10 +38,12 @@ const Header = props => (
         <>
           {lightTheme ? (
             <NavBarContainer>
-              <WebsiteLogo
-                src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
-                alt="website logo"
-              />
+              <Link to="/">
+                <WebsiteLogo
+                  src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
+                  alt="website logo"
+                />
+              </Link>
               <MenuBarContainer>
                 <ThemeButton type="button" onClick={onClickTheme}>
                   <FaMoon size="20px" />
@@ -65,10 +67,12 @@ const Header = props => (
             </NavBarContainer>
           ) : (
             <NavBarContainerDark>
-              <WebsiteLogo
-                src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png"
-                alt="website logo"
-              />
+              <Link to="/">
+                <WebsiteLogo
+                  src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png"
+                  alt="website logo"
+                />
+              </Link>
               <MenuBarContainer>
                 <ThemeButton type="button" onClick={onClickTheme}>
                   <FiSun size="20px" color="white" />
