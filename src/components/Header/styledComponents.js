@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const NavBarContainer = styled.div`
-  background-color: #ffffff;
+  background-color: ${props => (props.lightTheme ? '#ffffff' : '#231f20')};
   padding: 14px;
   display: flex;
   justify-content: space-between;
@@ -27,6 +27,7 @@ export const ThemeButton = styled.button`
 `
 export const LogoutButton = styled(ThemeButton)`
   margin-left: 10px;
+  color: ${props => (props.lightTheme ? '#000000' : '#ffffff')};
   @media screen and (min-width: 768px) {
     display: none;
   }
@@ -88,4 +89,18 @@ export const LogoutButtonLargeDark = styled.button`
   @media screen and (max-width: 767px) {
     display: none;
   }
+`
+export const PopupContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+`
+export const PopupDisplayContainer = styled.div`
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+`
+export const DisplayMessage = styled.p`
+  font-family: 'Roboto';
 `
