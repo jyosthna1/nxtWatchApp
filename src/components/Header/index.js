@@ -12,10 +12,8 @@ import {
   MenuBarContainer,
   ThemeButton,
   LogoutButton,
-  LogoutButtonLarge,
   ProfileButton,
   ProfileImage,
-  NavBarContainerDark,
   LogoutButtonLargeDark,
   PopupContainer,
   PopupDisplayContainer,
@@ -54,6 +52,12 @@ const Header = props => (
                 <FiSun size="20px" color="#ffffff" />
               </ThemeButton>
             )}
+            <ProfileButton type="button">
+              <ProfileImage
+                src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png"
+                alt="profile"
+              />
+            </ProfileButton>
 
             <LogoutButton type="button" lightTheme={lightTheme}>
               <GiHamburgerMenu size="20px" />
@@ -65,6 +69,13 @@ const Header = props => (
             >
               <FiLogOut size="20px" />
             </LogoutButton>
+            <LogoutButtonLargeDark
+              type="button"
+              onClick={onClickLogout}
+              lightTheme={lightTheme}
+            >
+              Logout
+            </LogoutButtonLargeDark>
           </MenuBarContainer>
         </NavBarContainer>
       )
