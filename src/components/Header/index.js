@@ -41,14 +41,24 @@ const Header = props => (
 
       return (
         <NavBarContainer lightTheme={lightTheme}>
-          <WebsiteLogo src={websiteLogoUrl} alt="website logo" />
+          <Link to="/">
+            <WebsiteLogo src={websiteLogoUrl} alt="website logo" />
+          </Link>
           <MenuBarContainer>
             {lightTheme ? (
-              <ThemeButton type="button" onClick={onClickTheme}>
+              <ThemeButton
+                type="button"
+                onClick={onClickTheme}
+                data-testid="theme"
+              >
                 <FaMoon size="20px" />
               </ThemeButton>
             ) : (
-              <ThemeButton type="button" onClick={onClickTheme}>
+              <ThemeButton
+                type="button"
+                onClick={onClickTheme}
+                data-testid="theme"
+              >
                 <FiSun size="20px" color="#ffffff" />
               </ThemeButton>
             )}

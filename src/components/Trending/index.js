@@ -78,7 +78,7 @@ const RenderTrendingVideosItem = props => (
         thumbnailUrl,
         title,
         viewCount,
-        channelName,
+        name,
         profileImageUrl,
         id,
       } = details
@@ -93,10 +93,10 @@ const RenderTrendingVideosItem = props => (
               <InformationContainer>
                 <Tittle lightTheme={lightTheme}>{title}</Tittle>
                 <ChannelName>
-                  {channelName} <br /> {viewCount} views . {time} ago
+                  {name} <br /> {viewCount} views . {time} ago
                 </ChannelName>
                 <ChannelNameSmallSize>
-                  {channelName} . {viewCount} views . {time} ago
+                  {name} . {viewCount} views . {time} ago
                 </ChannelNameSmallSize>
               </InformationContainer>
             </ChannelLogoAndDetailsContainer>
@@ -134,7 +134,7 @@ class TrendingVideos extends Component {
         thumbnailUrl: eachVideo.thumbnail_url,
         title: eachVideo.title,
         viewCount: eachVideo.view_count,
-        channelName: eachVideo.channel.name,
+        name: eachVideo.channel.name,
         profileImageUrl: eachVideo.channel.profile_image_url,
       }))
 
