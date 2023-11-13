@@ -105,8 +105,8 @@ class LoginDetails extends Component {
                 <LabelLight htmlFor="password">PASSWORD</LabelLight>
                 <InputLight
                   type={showPassword ? 'text' : 'password'}
-                  id="userName"
-                  placeholder="password"
+                  id="password"
+                  placeholder="Password"
                   value={password}
                   onChange={this.onChangePassword}
                 />
@@ -136,17 +136,17 @@ class LoginDetails extends Component {
                 <LabelDark htmlFor="usernameDark">USERNAME</LabelDark>
                 <InputDark
                   type="text"
-                  id="userName"
+                  id="usernameDark"
                   placeholder="Username"
                   value={userName}
                   onChange={this.onChangeUserName}
                 />
               </UserNameContainer>
               <UserNameContainer>
-                <LabelDark htmlFor="passwordDark">PASSWORD</LabelDark>
+                <LabelDark htmlFor="password">PASSWORD</LabelDark>
                 <InputDark
-                  type="password"
-                  id="passwordDark"
+                  type={showPassword ? 'text' : 'password'}
+                  id="password"
                   placeholder="Password"
                   value={password}
                   onChange={this.onChangePassword}
