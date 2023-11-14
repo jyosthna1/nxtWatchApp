@@ -51,7 +51,7 @@ class VideoItemDetails extends Component {
   }
 
   getFormattedData = data => ({
-    channelName: data.video_details.channel.name,
+    name: data.video_details.channel.name,
     profileImageUrl: data.video_details.channel.profile_image_url,
     subscriberCount: data.video_details.channel.subscriber_count,
     description: data.video_details.description,

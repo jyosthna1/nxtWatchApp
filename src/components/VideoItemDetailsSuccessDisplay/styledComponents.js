@@ -2,14 +2,14 @@ import styled from 'styled-components'
 
 export const VideoDetailsView = styled.div`
   flex-grow: 1;
-  background-color: ${props => (props.lightTheme ? '#f1f1f1' : '#181818')};
+  background-color: ${props => (props.lightTheme ? '#f1f1f1' : '#0f0f0f')};
   padding: 20px;
 `
 export const VideoContainer = styled.div`
   width: 90%;
 `
 
-export const Title = styled.h1`
+export const Title = styled.p`
   font-family: 'Roboto';
   font-size: 15px;
   font-size: 400;

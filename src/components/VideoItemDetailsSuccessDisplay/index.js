@@ -48,7 +48,7 @@ const VideoDetailsSuccessDisplay = props => (
         viewCount,
         publishedAt,
         thumbnailUrl,
-        channelName,
+        name,
         subscriberCount,
         profileImageUrl,
         id,
@@ -122,7 +122,7 @@ const VideoDetailsSuccessDisplay = props => (
           <LogoAndChannelNameContainer>
             <ProfileImage src={profileImageUrl} alt="channel logo" />
             <ChannelNameAndSubscriber>
-              <ChannelName lightTheme={lightTheme}>{channelName}</ChannelName>
+              <ChannelName lightTheme={lightTheme}>{name}</ChannelName>
               <Subscriber>{subscriberCount} subscribers</Subscriber>
             </ChannelNameAndSubscriber>
           </LogoAndChannelNameContainer>

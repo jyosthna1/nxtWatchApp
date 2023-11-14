@@ -68,7 +68,6 @@ const Header = props => (
                 alt="profile"
               />
             </ProfileButton>
-
             <LogoutButton type="button" lightTheme={lightTheme}>
               <GiHamburgerMenu size="20px" />
             </LogoutButton>

@@ -15,6 +15,7 @@ import {
   SocialMediaImage,
   LogoDescription,
 } from './styledComponents'
+import './index.css'
 import ThemeContext from '../../context/ThemeContext'
 
 const SideBar = () => (
@@ -24,7 +25,7 @@ const SideBar = () => (
       return (
         <SideBarContainer>
           <LinkItems>
-            <Link to="/">
+            <Link to="/" className="list">
               <HomeIconContainer data-testid="home">
                 <IconButton>
                   <AiFillHome size="15px" />
@@ -32,7 +33,7 @@ const SideBar = () => (
                 <PageName lightTheme={lightTheme}>Home</PageName>
               </HomeIconContainer>
             </Link>
-            <Link to="/trending">
+            <Link to="/trending" className="list">
               <HomeIconContainer>
                 <IconButton>
                   <HiFire size="15px" />
@@ -40,7 +41,7 @@ const SideBar = () => (
                 <PageName lightTheme={lightTheme}>Trending</PageName>
               </HomeIconContainer>
             </Link>
-            <Link to="/gaming">
+            <Link to="/gaming" className="list">
               <HomeIconContainer>
                 <IconButton>
                   <GiGamepad size="15px" />
@@ -48,7 +49,7 @@ const SideBar = () => (
                 <PageName lightTheme={lightTheme}>Gaming</PageName>
               </HomeIconContainer>
             </Link>
-            <Link to="/saved-videos">
+            <Link to="/saved-videos" className="list">
               <HomeIconContainer>
                 <IconButton>
                   <MdPlaylistAdd size="15px" />

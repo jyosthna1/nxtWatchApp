@@ -33,7 +33,7 @@ export const PageIconContainer = styled.div`
   padding-left: 30px;
   background-color: ${props => (props.lightTheme ? '#e2e8f0' : '#000000')};
 `
-export const PageName = styled.p`
+export const PageName = styled.h1`
   font-family: 'Roboto';
   font-size: 20px;
   color: ${props => (props.lightTheme ? '#000000' : '#ffffff')};
@@ -123,7 +123,7 @@ export const GameImage = styled.img`
     height: 300px;
   }
 `
-export const GameName = styled.h1`
+export const GameName = styled.p`
   font-family: 'Roboto';
   font-size: 14px;
   font-weight: bold;

@@ -36,7 +36,7 @@ const apiStatusConstants = {
   inProgress: 'IN_PROGRESS',
 }
 
-const FailureView = () => (
+const FailureViewGaming = () => (
   <ThemeContext.Consumer>
     {value => {
       const {lightTheme} = value
@@ -48,7 +48,7 @@ const FailureView = () => (
         <FailureContainer>
           <FailureImage src={image} alt="failure view" />
           <FailureHead lightTheme={lightTheme}>
-            Oops! Something went wrong
+            Oops! Something Went Wrong
           </FailureHead>
           <FailureInfo lightTheme={lightTheme}>
             We are having some trouble to complete some request. <br /> Please
@@ -143,7 +143,7 @@ class GameVideosComponent extends Component {
       case apiStatusConstants.inProgress:
         return this.LoadingView()
       case apiStatusConstants.failure:
-        return <FailureView />
+        return <FailureViewGaming />
       case apiStatusConstants.success:
         return this.renderSuccess()
 

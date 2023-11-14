@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const HomeIconContainer = styled.button`
+export const HomeIconContainer = styled.li`
   display: flex;
   align-items: center;
   border-width: 0px;
@@ -10,7 +10,6 @@ export const HomeIconContainer = styled.button`
   padding-left: 10px;
   padding-right: 20px;
   background-color: transparent;
-  text-decoration: none;
 `
 export const IconButton = styled.button`
   outline: none;
@@ -31,9 +30,10 @@ export const SideBarContainer = styled.div`
   min-height: 600px;
   width: 200px;
 `
-export const LinkItems = styled.div`
+export const LinkItems = styled.ul`
   display: flex;
   flex-direction: column;
+  padding: 0px;
 `
 export const SideBarLastMenu = styled.div`
   display: flex;

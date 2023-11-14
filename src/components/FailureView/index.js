@@ -21,7 +21,7 @@ const FailureView = () => (
         <FailureContainer>
           <FailureImage src={image} alt="failure view" />
           <FailureHead lightTheme={lightTheme}>
-            Oops! Something went wrong
+            Oops! Something Went Wrong
           </FailureHead>
           <FailureInfo lightTheme={lightTheme}>
             We are having some trouble to complete some request. <br /> Please
