@@ -117,10 +117,14 @@ export const Tittle = styled.p`
     font-size: 18px;
   }
 `
+export const NameViewCountContainer = styled.div`
+  display: flex;
+`
 export const ChannelName = styled.p`
   font-family: 'Roboto';
   font-size: 13px;
   line-height: 26px;
+  padding-left: 7px;
   margin-top: 0px;
   color: ${props => (props.lightTheme ? '#313131' : '#606060')};
   @media screen and (max-width: 767px) {
@@ -131,7 +135,8 @@ export const ChannelNameSmallSize = styled.p`
   font-family: 'Roboto';
   font-size: 13px;
   margin-top: 0px;
-  color: ${props => (props.lightTheme ? '#313131' : '#cbd5e1')};
+  padding-left: 7px;
+  color: ${props => (props.lightTheme ? '#313131' : '#7e858e')};
   @media screen and (min-width: 768px) {
     display: none;
   }

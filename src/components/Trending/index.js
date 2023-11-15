@@ -32,6 +32,7 @@ import {
   FailureHead,
   FailureInfo,
   RetryButton,
+  NameViewCountContainer,
 } from './styledComponents'
 
 const apiStatusConstants = {
@@ -92,13 +93,18 @@ const RenderTrendingVideosItem = props => (
               <ProfileImage src={profileImageUrl} alt="channel logo" />
               <InformationContainer>
                 <Tittle lightTheme={lightTheme}>{title}</Tittle>
-                <ChannelName>{name}</ChannelName>
                 <ChannelName>
-                  {viewCount} views . {time} ago
+                  {name} <br />
                 </ChannelName>
-                <ChannelNameSmallSize>
-                  {name} . {viewCount} views . {time} ago
-                </ChannelNameSmallSize>
+                <NameViewCountContainer>
+                  <ChannelName> {viewCount} views . </ChannelName>
+                  <ChannelName>{time} ago</ChannelName>
+                </NameViewCountContainer>
+                <NameViewCountContainer>
+                  <ChannelNameSmallSize>{name} . </ChannelNameSmallSize>
+                  <ChannelNameSmallSize>{viewCount} views</ChannelNameSmallSize>
+                  <ChannelNameSmallSize> . {time} ago</ChannelNameSmallSize>
+                </NameViewCountContainer>
               </InformationContainer>
             </ChannelLogoAndDetailsContainer>
           </TrendingListItem>

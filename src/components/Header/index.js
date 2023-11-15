@@ -18,6 +18,9 @@ import {
   PopupContainer,
   PopupDisplayContainer,
   DisplayMessage,
+  CancelButton,
+  ConformButton,
+  ButtonsContainer,
 } from './styledComponents'
 
 const Header = props => (
@@ -71,13 +74,39 @@ const Header = props => (
             <LogoutButton type="button" lightTheme={lightTheme}>
               <GiHamburgerMenu size="20px" />
             </LogoutButton>
-            <LogoutButton
-              type="button"
-              lightTheme={lightTheme}
-              onClick={onClickLogout}
-            >
-              <FiLogOut size="20px" />
-            </LogoutButton>
+            <PopupContainer>
+              <Popup
+                modal
+                trigger={
+                  <LogoutButton type="button" lightTheme={lightTheme}>
+                    <FiLogOut size="20px" />
+                  </LogoutButton>
+                }
+              >
+                {close => (
+                  <PopupDisplayContainer lightTheme={lightTheme}>
+                    <div>
+                      <DisplayMessage lightTheme={lightTheme}>
+                        Are you sure you want to logout?
+                      </DisplayMessage>
+                    </div>
+                    <ButtonsContainer>
+                      <CancelButton
+                        type="button"
+                        className="trigger-button"
+                        onClick={() => close()}
+                      >
+                        Cancel
+                      </CancelButton>
+                      <ConformButton type="button" onClick={onClickLogout}>
+                        Confirm
+                      </ConformButton>
+                    </ButtonsContainer>
+                  </PopupDisplayContainer>
+                )}
+              </Popup>
+            </PopupContainer>
+
             <LogoutButtonLargeDark
               type="button"
               onClick={onClickLogout}

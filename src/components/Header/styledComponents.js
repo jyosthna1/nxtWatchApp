@@ -75,10 +75,35 @@ export const PopupContainer = styled.div`
   height: 100vh;
 `
 export const PopupDisplayContainer = styled.div`
-  background-color: #ffffff;
+  background-color: ${props => (props.lightTheme ? '#ffffff' : '#000000')};
   border-radius: 10px;
   padding: 20px;
 `
 export const DisplayMessage = styled.p`
   font-family: 'Roboto';
+  color: ${props => (props.lightTheme ? '#000000' : '#ffffff')};
+  font-size: 14px;
+`
+export const CancelButton = styled.button`
+  background-color: transparent;
+  border-width: 0px;
+  color: #7e858e;
+  border: 1px solid #7e858e;
+  padding: 7px;
+
+  font-family: 'Roboto';
+  font-size: 12px;
+`
+export const ConformButton = styled.button`
+  font-family: 'Roboto';
+  font-size: 12px;
+  border-width: 0px;
+  background-color: #3b82f6;
+  color: #ffffff;
+  padding: 7px;
+`
+export const ButtonsContainer = styled.div`
+  display: flex;
+  padding-top: 10px;
+  justify-content: space-evenly;
 `
