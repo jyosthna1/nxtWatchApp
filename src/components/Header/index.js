@@ -65,12 +65,7 @@ const Header = props => (
                 <FiSun size="20px" color="#ffffff" />
               </ThemeButton>
             )}
-            <ProfileButton type="button">
-              <ProfileImage
-                src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png"
-                alt="profile"
-              />
-            </ProfileButton>
+
             <LogoutButton type="button" lightTheme={lightTheme}>
               <GiHamburgerMenu size="20px" />
             </LogoutButton>
@@ -106,14 +101,44 @@ const Header = props => (
                 )}
               </Popup>
             </PopupContainer>
-
-            <LogoutButtonLargeDark
-              type="button"
-              onClick={onClickLogout}
-              lightTheme={lightTheme}
-            >
-              Logout
-            </LogoutButtonLargeDark>
+            <ProfileButton type="button">
+              <ProfileImage
+                src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png"
+                alt="profile"
+              />
+            </ProfileButton>
+            <PopupContainer>
+              <Popup
+                modal
+                trigger={
+                  <LogoutButtonLargeDark type="button" lightTheme={lightTheme}>
+                    Logout
+                  </LogoutButtonLargeDark>
+                }
+              >
+                {close => (
+                  <PopupDisplayContainer lightTheme={lightTheme}>
+                    <div>
+                      <DisplayMessage lightTheme={lightTheme}>
+                        Are you sure you want to logout?
+                      </DisplayMessage>
+                    </div>
+                    <ButtonsContainer>
+                      <CancelButton
+                        type="button"
+                        className="trigger-button"
+                        onClick={() => close()}
+                      >
+                        Cancel
+                      </CancelButton>
+                      <ConformButton type="button" onClick={onClickLogout}>
+                        Confirm
+                      </ConformButton>
+                    </ButtonsContainer>
+                  </PopupDisplayContainer>
+                )}
+              </Popup>
+            </PopupContainer>
           </MenuBarContainer>
         </NavBarContainer>
       )

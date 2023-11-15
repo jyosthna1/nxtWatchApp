@@ -24,7 +24,7 @@ const VideoCard = props => (
         thumbnailUrl,
         title,
         viewCount,
-        channelName,
+        name,
         profileImageUrl,
         id,
       } = details
@@ -38,10 +38,10 @@ const VideoCard = props => (
               <InformationContainer>
                 <Tittle lightTheme={lightTheme}>{title}</Tittle>
                 <ChannelName>
-                  {channelName} <br /> {viewCount} views . {time} ago
+                  {name} <br /> {viewCount} views . {time} ago
                 </ChannelName>
                 <ChannelNameSmallSize>
-                  {channelName} . {viewCount} views . {time} ago
+                  {name} . {viewCount} views . {time} ago
                 </ChannelNameSmallSize>
               </InformationContainer>
             </ChannelLogoAndDetailsContainer>

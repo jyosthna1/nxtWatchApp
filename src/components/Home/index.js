@@ -48,7 +48,7 @@ const RenderBanner = props => {
 
   return (
     <>
-      <BannerContainer>
+      <BannerContainer data-testid="banner">
         <BannerAndClose>
           <LogoInBanner
             src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
@@ -60,7 +60,7 @@ const RenderBanner = props => {
         </BannerAndClose>
         <Heading>Buy Nxt Watch Premium prepaid plans with UPI</Heading>
         <GetItNowButton type="button" data-testid="close">
-          Get It Now
+          GET IT NOW
         </GetItNowButton>
       </BannerContainer>
     </>
@@ -101,7 +101,7 @@ class HomeClass extends Component {
         thumbnailUrl: eachVideo.thumbnail_url,
         title: eachVideo.title,
         viewCount: eachVideo.view_count,
-        channelName: eachVideo.channel.name,
+        name: eachVideo.channel.name,
         profileImageUrl: eachVideo.channel.profile_image_url,
       }))
       this.setState({

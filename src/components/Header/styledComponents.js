@@ -38,9 +38,6 @@ export const ProfileButton = styled.button`
   border-width: 0px;
   cursor: pointer;
   margin-right: 10px;
-  @media screen and (min-width: 768px) {
-    display: flex;
-  }
   @media screen and (max-width: 767px) {
     display: none;
   }
